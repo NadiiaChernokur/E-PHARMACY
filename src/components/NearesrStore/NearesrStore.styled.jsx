@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 export const NearestStoreUl = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   gap: 36px;
   width: 1248px;
   margin: auto;

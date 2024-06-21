@@ -60,3 +60,15 @@ export const getProducts = createAsyncThunk(
     }
   }
 );
+export const getNearestStore = createAsyncThunk(
+  'nearest',
+  async (data, thunkAPI) => {
+    try {
+      const respons = await axios.get(`/api/stores/nearest`);
+      console.log(respons.data);
+      return respons.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

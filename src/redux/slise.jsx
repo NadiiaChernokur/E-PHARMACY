@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCategories, getProducts } from './operation';
+import { getCategories, getNearestStore, getProducts } from './operation';
 
 const initialState = {
   categories: [],
   productsArray: [],
-  //   noticesArray: [],
+  nearestStore: [],
   //   categoriesArray: [],
   //   location: [],
   //   noticesResponse: [],
@@ -47,11 +47,11 @@ const getProductsFulfilled = (state, action) => {
   state.error = null;
   state.productsArray = action.payload;
 };
-// const getNoticesFulfilled = (state, action) => {
-//   state.isLoading = false;
-//   state.error = null;
-//   state.noticesArray = action.payload;
-// };
+const getNearestStoreFulfilled = (state, action) => {
+  state.isLoading = false;
+  state.error = null;
+  state.nearestStore = action.payload;
+};
 // const addPetFulfilled = (state, action) => {
 //   state.isLoading = false;
 //   state.error = null;
@@ -120,10 +120,10 @@ const farmaSlice = createSlice({
       .addCase(getCategories.rejected, handleRejected)
       .addCase(getProducts.pending, handlePending)
       .addCase(getProducts.fulfilled, getProductsFulfilled)
-      .addCase(getProducts.rejected, handleRejected),
-  //   .addCase(getNotices.pending, handlePending)
-  //   .addCase(getNotices.fulfilled, getNoticesFulfilled)
-  //   .addCase(getNotices.rejected, handleRejected)
+      .addCase(getProducts.rejected, handleRejected)
+      .addCase(getNearestStore.pending, handlePending)
+      .addCase(getNearestStore.fulfilled, getNearestStoreFulfilled)
+      .addCase(getNearestStore.rejected, handleRejected),
   //   .addCase(getNoticesCategories.pending, handlePendingCategory)
   //   .addCase(getNoticesCategories.fulfilled, getNoticesCategoriesFulfilled)
   //   .addCase(getNoticesCategories.rejected, handleRejected)

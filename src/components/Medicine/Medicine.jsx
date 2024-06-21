@@ -17,12 +17,13 @@ import {
   MedicineUl,
   SearchSvg,
 } from './Medicine.styled';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import sprite from '../../img/sprite.svg';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getCategories, getProducts } from '../../redux/operation';
+import Paginations from 'components/Pagination/Pagination';
 
 const validationSchema = Yup.object({
   keyword: Yup.string(),
@@ -32,9 +33,10 @@ const validationSchema = Yup.object({
 const Medicine = () => {
   const [options, setOptions] = useState([]);
   const [pruductArray, setProductArray] = useState([]);
-  const [filterArray, setFilterArray] = useState([]);
+  //   const [filterArray, setFilterArray] = useState([]);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(12);
+  const [totalPages, setTotalPages] = useState(0);
   const dispatch = useDispatch();
   useEffect(() => {
     const toGetCategories = async () => {
@@ -42,7 +44,7 @@ const Medicine = () => {
       const prod = await dispatch(
         getProducts({ page, limit, keyword: '', category: '' })
       );
-      console.log(prod);
+
       if (prod.meta.requestStatus === 'fulfilled') {
         setProductArray(prod.payload);
       }
@@ -52,14 +54,31 @@ const Medicine = () => {
     return;
   }, [dispatch, limit, page]);
   const fetchProducts = async val => {
-    console.log(val);
     const { category, keyword } = val;
-    console.log(category);
+
     const res = await dispatch(getProducts({ page, limit, category, keyword }));
-    console.log(res);
+
     if (res.meta.requestStatus === 'fulfilled') {
       setProductArray(res.payload);
     }
+  };
+  //   const getResponseArray = newArray => {
+  //     setNewArray(newArray);
+  //   };
+  const addPage = () => {
+    setPage(prev => prev + 1);
+  };
+  const subtractPage = () => {
+    setPage(prev => prev - 1);
+  };
+  const firstPage = () => {
+    setPage(1);
+  };
+  const lastPage = () => {
+    setPage(totalPages);
+  };
+  const toTotalPege = totP => {
+    setTotalPages(totP);
   };
 
   return (
@@ -135,6 +154,14 @@ const Medicine = () => {
           </MedicineLi>
         ))}
       </MedicineUl>
+      <Paginations
+        add={addPage}
+        subtract={subtractPage}
+        page={page}
+        first={firstPage}
+        last={lastPage}
+        total={totalPages}
+      />
     </MedicineContainer>
   );
 };

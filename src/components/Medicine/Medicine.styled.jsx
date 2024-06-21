@@ -1,3 +1,4 @@
+import { Field, Form } from 'formik';
 import styled from 'styled-components';
 export const MedicineContainer = styled.div`
   display: flex;
@@ -12,7 +13,12 @@ export const MedicineContainer = styled.div`
   line-height: 114%;
   color: #1d1e21;
 `;
-
+export const MedicineH2 = styled.h2`
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 114%;
+  color: #1d1e21;
+`;
 export const MedicineUl = styled.ul`
   display: flex;
   gap: 21px;
@@ -24,6 +30,7 @@ export const MedicineLi = styled.li`
   box-sizing: border-box;
   height: 423px;
   display: flex;
+  flex-direction: column;
   gap: 8px;
 `;
 export const MedicineImgDiv = styled.div`
@@ -67,6 +74,7 @@ export const ButtonsDiv = styled.div`
 `;
 export const MedicineAddButton = styled.button`
   border-radius: 24px;
+  border: none;
   padding: 10px 16px;
   /* width: 108px;
   height: 34px; */
@@ -86,4 +94,56 @@ export const MedicineDetailsButton = styled.button`
   color: #1d1e21;
   background: none;
   border: none;
+  padding: 0;
+`;
+export const FilterButton = styled.button`
+  border-radius: 60px;
+  padding: 13px 30px;
+  width: 116px;
+  height: 44px;
+  background: #59b17a;
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+export const FilterForm = styled(Form)`
+  display: flex;
+  gap: 8px;
+`;
+
+export const FieldSelector = styled(Field)`
+  border: 1px solid rgba(29, 30, 33, 0.1);
+  border-radius: 60px;
+  width: 214px;
+  height: 44px;
+  background: #fff;
+  margin-right: 6px;
+  padding: 10px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: rgba(29, 30, 33, 0.4);
+`;
+export const FieldSearch = styled(Field)`
+  border: 1px solid rgba(29, 30, 33, 0.1);
+  border-radius: 60px;
+  width: 214px;
+  background: #fff;
+  margin-right: 6px;
+  padding: 10px;
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: rgba(29, 30, 33, 0.4);
+`;
+export const SearchSvg = styled.svg`
+  position: absolute;
+  top: 15px;
+  right: 20px;
 `;

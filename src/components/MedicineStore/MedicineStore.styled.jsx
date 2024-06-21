@@ -1,0 +1,104 @@
+import styled from 'styled-components';
+export const MedicineStoreContainer = styled.div`
+  width: 1223px;
+  padding: 72px 20px;
+  margin: auto;
+  box-sizing: border-box;
+`;
+export const MedicineStoreUl = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+`;
+export const MedicineStoreLi = styled.li`
+  border: 1.15px solid #f1f1f1;
+  border-radius: 27px;
+  padding: 40px;
+  width: 381px;
+  height: 276px;
+  background: #e7f1ed;
+  box-sizing: border-box;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140%;
+  color: #1d1e21;
+`;
+export const MedicineStoreName = styled.p`
+  margin-bottom: 20px;
+`;
+export const MedicineStoreAdres = styled.div`
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #93939a;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+`;
+export const MedicineStoreVisiteDiv = styled.div`
+  margin-top: 36px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const VisiteButton = styled.button`
+  border-radius: 24px;
+  padding: 10px 16px;
+  border: none;
+  background: #59b17a;
+  height: 34px;
+  width: 102px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  text-align: center;
+  color: #fff;
+`;
+
+export const StarDiv = styled.div`
+  display: flex;
+  gap: 14px;
+`;
+export const StarNambeDiv = styled.div`
+  display: flex;
+  gap: 6px;
+  align-items: center;
+`;
+export const OpenDiv = styled.div`
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 65px;
+  height: 34px;
+  background: rgba(89, 177, 122, 0.1);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #59b17a;
+  box-sizing: border-box;
+`;
+export const CloseDiv = styled.div`
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 71px;
+  height: 34px;
+  background: rgba(232, 80, 80, 0.1);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #e85050;
+  box-sizing: border-box;
+`;
+export const StarNumber = styled.p`
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: #1d1e21;
+`;
+export const Adress = styled.p`
+  width: 120px;
+`;

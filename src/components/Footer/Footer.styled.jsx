@@ -20,10 +20,20 @@ export const TopFooterDiv = styled.div`
 export const Nav = styled.nav`
   display: flex;
   gap: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  color: #f7f8fa;
 `;
 export const FooterLogoDiv = styled.div`
   display: flex;
+  align-items: center;
   gap: 14px;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.03em;
+  color: #f7f8fa;
+  margin-bottom: 20px;
 `;
 export const FooterText = styled.p`
   width: 311px;
@@ -35,9 +45,12 @@ export const MediaDiv = styled.div`
 export const Media = styled.div`
   border: 1px solid rgba(247, 248, 250, 0.1);
   border-radius: 10px;
-  padding: 8px;
+
   width: 44px;
   height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 export const BottomFooterDiv = styled.div`
   display: flex;

@@ -11,12 +11,22 @@ import {
   RegButton,
   RegDiv,
 } from './Header.styled';
+// import sprite from '../../sprite.svg';
+import logo from '../../img/MaskLogo.png';
 
 const Header = () => {
   return (
     <HeaderContainer>
       <LogoDiv>
-        <svg width={44} height={44}></svg>
+        <img src={logo} alt="Logo"></img>
+        {/* <svg
+          width={44}
+          height={44}
+          style={{ fill: 'white', stroke: 'white', background: 'white' }}
+        >
+          <use href={`${sprite}#Maskgroup`}></use>
+        </svg> */}
+
         <p>E-Pharmacy</p>
       </LogoDiv>
       <NavDiv>
@@ -43,7 +53,9 @@ const Header = () => {
       {/* <div>
         <NavLink>
           <div>
-            <svg></svg>
+             <svg width={44} height={44}>
+          <use href={`${sprite}#cross-small`}></use>
+        </svg>
           </div>
         </NavLink>
         <NavLink>

@@ -10,6 +10,8 @@ import {
   Span,
   TopFooterDiv,
 } from './Footer.styled';
+import sprite from '../../img/sprite.svg';
+import logo from '../../img/MaskG.png';
 
 const Footer = () => {
   return (
@@ -18,7 +20,11 @@ const Footer = () => {
         <TopFooterDiv>
           <div>
             <FooterLogoDiv>
-              <svg width={44} height={44}></svg>
+              {/* <svg width="18" height="18">
+                <use href={`${sprite}#`}></use>
+              </svg> */}
+
+              <img src={logo} alt="Logo"></img>
               <p>E-Pharmacy</p>
             </FooterLogoDiv>
             <FooterText>
@@ -32,9 +38,21 @@ const Footer = () => {
             <p>Medicine</p>
           </Nav>
           <MediaDiv>
-            <Media></Media>
-            <Media></Media>
-            <Media></Media>
+            <Media>
+              <svg width="28" height="28">
+                <use href={`${sprite}#facebook`}></use>
+              </svg>
+            </Media>
+            <Media>
+              <svg width="28" height="28">
+                <use href={`${sprite}#instagram`}></use>
+              </svg>
+            </Media>
+            <Media>
+              <svg width="28" height="28">
+                <use href={`${sprite}#youtube`}></use>
+              </svg>
+            </Media>
           </MediaDiv>
         </TopFooterDiv>
         <BottomFooterDiv>

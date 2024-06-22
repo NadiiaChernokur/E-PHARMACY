@@ -1,6 +1,7 @@
 import {
   Adress,
   CloseDiv,
+  Name,
   NearestStoreAdress,
   NearestStoreAdressSvg,
   NearestStoreLi,
@@ -32,7 +33,7 @@ const NearesrStore = () => {
       {store?.map(item => (
         <NearestStoreLi key={item._id}>
           <NearestStoreName>
-            <p>{item.name}</p>
+            <Name>{item.name}</Name>
             <NearestStoreOpen>
               <StarDiv>
                 <svg width="16" height="16">
@@ -40,8 +41,11 @@ const NearesrStore = () => {
                 </svg>
                 <StarNumber>{item.rating}</StarNumber>
               </StarDiv>
-              <OpenDiv>open</OpenDiv>
-              {/* <CloseDiv>close</CloseDiv> */}
+              {item.status === 'open' ? (
+                <OpenDiv>open</OpenDiv>
+              ) : (
+                <CloseDiv>close</CloseDiv>
+              )}
             </NearestStoreOpen>
           </NearestStoreName>
           <NearestStoreAdress>

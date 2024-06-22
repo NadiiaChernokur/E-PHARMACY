@@ -1,10 +1,12 @@
 import {
   AddMedicinesButton,
   AddMedicinesContainer,
+  AddMedicinesImgDiv,
   AddMedicinesLeft,
   AddMedicinesParagraf,
   AddMedicinesText,
 } from './AddMedicine.styled';
+import photo from '../../img/Add your image here.png';
 
 const AddMedicine = () => {
   return (
@@ -19,7 +21,9 @@ const AddMedicine = () => {
         </AddMedicinesText>
         <AddMedicinesButton>Buy medicine</AddMedicinesButton>
       </AddMedicinesLeft>
-      <div></div>
+      <AddMedicinesImgDiv>
+        <img src={photo} alt="Img" width="100%"></img>
+      </AddMedicinesImgDiv>
     </AddMedicinesContainer>
   );
 };

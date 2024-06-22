@@ -4,8 +4,8 @@ export const FooterContainer = styled.footer`
   width: 100%;
   height: 328px;
   padding: 40px 0;
-  position: fixed;
-  bottom: 0;
+  /* position: fixed; */
+  /* bottom: 0; */
   color: #f7f8fa;
 `;
 export const InnerFooterContainer = styled.div`

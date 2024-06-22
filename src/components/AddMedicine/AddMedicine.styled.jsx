@@ -39,3 +39,7 @@ export const AddMedicinesButton = styled.button`
   line-height: 129%;
   color: #f1f1f1;
 `;
+export const AddMedicinesImgDiv = styled.div`
+  width: 608px;
+  height: 406px;
+`;

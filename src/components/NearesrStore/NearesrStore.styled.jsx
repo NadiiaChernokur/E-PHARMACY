@@ -26,6 +26,12 @@ export const NearestStoreName = styled.div`
   align-items: center;
   margin-bottom: 40px;
 `;
+export const Name = styled.p`
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
 export const NearestStoreOpen = styled.div`
   display: flex;
   gap: 14px;

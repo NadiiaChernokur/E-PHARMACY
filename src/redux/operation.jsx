@@ -72,3 +72,15 @@ export const getNearestStore = createAsyncThunk(
     }
   }
 );
+export const getReviews = createAsyncThunk(
+  'reviews',
+  async (data, thunkAPI) => {
+    try {
+      const respons = await axios.get(`/api/customer-reviews`);
+      console.log(respons.data);
+      return respons.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

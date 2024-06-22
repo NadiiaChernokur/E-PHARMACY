@@ -6,12 +6,20 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: auto;
+  position: relative;
+  z-index: 5;
 `;
 export const LogoDiv = styled.div`
   display: flex;
   gap: 14px;
   align-items: center;
   justify-content: center;
+`;
+export const LogoText = styled.p`
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.03em;
+  color: ${({ $isHomePage }) => ($isHomePage ? ' #fff' : '#1d1e21')};
 `;
 export const NavDiv = styled.nav`
   display: flex;
@@ -27,21 +35,21 @@ export const NavParagrafInner = styled.p`
   padding: 8px 20px;
   margin: 0;
   background: white;
-  /* background: green; */
+  background: ${({ $isActive }) => ($isActive ? ' #59b17a' : '#fff')};
   border-radius: 60px;
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
-  color: #93939a;
+  color: ${({ $isActive }) => ($isActive ? ' #fff' : ' #93939a')};
 `;
 export const MidleDiv = styled.div`
   width: 2px;
-  height: 13px;
+  height: 12px;
   background: white;
   position: relative;
 `;
 export const InnerDiv = styled.div`
-  width: 4px;
+  width: 6px;
   height: 12px;
   left: -2px;
   background: white;

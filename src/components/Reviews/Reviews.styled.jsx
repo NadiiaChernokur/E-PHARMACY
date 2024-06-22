@@ -39,4 +39,10 @@ export const ReviewsImgDiv = styled.div`
   background: pink;
   position: absolute;
   top: -33px;
+  overflow: hidden;
+`;
+export const ReviewsImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;

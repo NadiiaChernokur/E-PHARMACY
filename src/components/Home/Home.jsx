@@ -1,23 +1,33 @@
 import Information from 'components/Information/Information';
 import {
   HomeContainer,
+  HomeMain,
+  HomeMainImg,
+  HomeMainText,
   HomeReviews,
   HomeReviewsText,
   HomeSearch,
   HomeStores,
+  HomeText,
 } from './Home.styled';
 import NearesrStore from 'components/NearesrStore/NearesrStore';
 import AddMedicine from 'components/AddMedicine/AddMedicine';
 import FeaturesSection from 'components/FeaturesSection/FeaturesSection';
 import Reviews from 'components/Reviews/Reviews';
+import photo from '../../img/IMG.png';
 
 const Home = () => {
   return (
     <HomeContainer>
-      {/* <div>
-        <p>Your medication delivered</p>
-        <p>Say goodbye to all your healthcare worries with us</p>
-      </div> */}
+      <HomeMain>
+        <div style={{ position: 'relative' }}>
+          <HomeMainImg src={photo} alt="Pills"></HomeMainImg>
+          <HomeMainText>Your medication delivered</HomeMainText>
+          <HomeText>
+            Say goodbye to all your healthcare worries with us
+          </HomeText>
+        </div>
+      </HomeMain>
       <Information />
       <HomeStores>Your Nearest Medicine Store</HomeStores>
       <HomeSearch>Search for Medicine, Filter by your location</HomeSearch>

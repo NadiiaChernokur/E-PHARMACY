@@ -15,8 +15,12 @@ import AddMedicine from 'components/AddMedicine/AddMedicine';
 import FeaturesSection from 'components/FeaturesSection/FeaturesSection';
 import Reviews from 'components/Reviews/Reviews';
 import photo from '../../img/IMG.png';
+import { useEffect } from 'react';
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <HomeContainer>
       <HomeMain>

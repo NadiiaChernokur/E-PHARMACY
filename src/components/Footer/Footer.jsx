@@ -12,6 +12,7 @@ import {
 } from './Footer.styled';
 import sprite from '../../img/sprite.svg';
 import logo from '../../img/MaskG.png';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -33,9 +34,15 @@ const Footer = () => {
             </FooterText>
           </div>
           <Nav>
-            <p>Home</p>
-            <p>Medicine store</p>
-            <p>Medicine</p>
+            <NavLink to="/home">
+              <p>Home</p>
+            </NavLink>
+            <NavLink to="/medicine-store">
+              <p>Medicine store</p>
+            </NavLink>
+            <NavLink to="/medicine">
+              <p>Medicine</p>
+            </NavLink>
           </Nav>
           <MediaDiv>
             <Media>

@@ -15,8 +15,12 @@ import {
   VisiteButton,
 } from './MedicineStore.styled';
 import sprite from '../../img/sprite.svg';
+import { useEffect } from 'react';
 
 const MedicineStore = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <MedicineStoreContainer>
       <h3>Medicine store</h3>

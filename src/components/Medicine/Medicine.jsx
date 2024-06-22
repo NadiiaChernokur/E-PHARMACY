@@ -39,6 +39,9 @@ const Medicine = () => {
   const [totalPages, setTotalPages] = useState(0);
   const dispatch = useDispatch();
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
     const toGetCategories = async () => {
       const categ = await dispatch(getCategories());
       const prod = await dispatch(

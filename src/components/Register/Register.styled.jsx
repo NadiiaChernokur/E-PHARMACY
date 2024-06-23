@@ -27,7 +27,16 @@ export const RegisterTextSpan = styled.span`
 `;
 export const RegisterForm = styled(Form)`
   width: 574px;
-
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: rgba(29, 30, 33, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 62px;
+`;
+export const LoginForm = styled(Form)`
+  width: 323px;
   font-weight: 400;
   font-size: 12px;
   line-height: 150%;
@@ -39,6 +48,11 @@ export const RegisterForm = styled(Form)`
 export const RegisterFieldDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
+  gap: 14px;
+`;
+export const LogFieldDiv = styled.div`
+  display: flex;
+  flex-direction: column;
   gap: 14px;
 `;
 export const RegisterField = styled(Field)`

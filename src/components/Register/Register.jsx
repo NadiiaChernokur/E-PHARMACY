@@ -1,7 +1,9 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import {
   Error,
+  LogFieldDiv,
   LogInSpan,
+  LoginForm,
   RegisterButton,
   RegisterButtonDiv,
   RegisterContainer,
@@ -16,6 +18,7 @@ import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { registration } from '../../redux/operation';
 import photo from '../../img/white round pill.png';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -36,12 +39,35 @@ const validationSchema = Yup.object({
     .min(6, 'The password must contain at least 6 characters'),
 });
 
+const validationLogSchema = Yup.object({
+  email: Yup.string()
+    .matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+    .required('Email is required'),
+
+  password: Yup.string()
+    .required('Password is required')
+    .min(6, 'The password must contain at least 6 characters'),
+});
+
 const Register = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleSubmit = async values => {
     console.log(values);
     const res = await dispatch(registration(values));
     console.log(res);
+  };
+  const handleLogSubmit = async values => {
+    console.log(values);
+    const res = await dispatch(registration(values));
+    console.log(res);
+  };
+  const toLogin = () => {
+    navigate('/login');
+  };
+  const toRegistration = () => {
+    navigate('/register');
   };
   return (
     <RegisterContainer>
@@ -52,62 +78,107 @@ const Register = () => {
         </h3>
         <RegisterImg src={photo} alt="Pills"></RegisterImg>
       </RegisterText>
+      {location.pathname === '/register' && (
+        <Formik
+          initialValues={{ name: '', email: '', phone: '', password: '' }}
+          validationSchema={validationSchema}
+          onSubmit={(values, { setSubmitting }) => {
+            handleSubmit(values);
+            setSubmitting(false);
+          }}
+        >
+          {({ isSubmitting }) => (
+            <RegisterForm>
+              <RegisterFieldDiv>
+                <div>
+                  <RegisterField
+                    type="text"
+                    name="name"
+                    placeholder="User Name"
+                  />
+                  <Error name="name" component="div" />
+                </div>
+                <div>
+                  <RegisterField
+                    type="text"
+                    name="email"
+                    placeholder="Email address"
+                  />
+                  <Error name="email" component="div" />
+                </div>
+                <div>
+                  <RegisterField
+                    type="text"
+                    name="phone"
+                    placeholder="Phone number"
+                  />
+                  <Error name="phone" component="div" />
+                </div>
+                <div>
+                  <RegisterField
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                  <Error name="password" component="div" />
+                </div>
+              </RegisterFieldDiv>
+              <RegisterButtonDiv>
+                <RegisterButton type="submit" disabled={isSubmitting}>
+                  Register
+                </RegisterButton>
+                <p>
+                  Already have an account?{' '}
+                  <LogInSpan onClick={toLogin}>Login</LogInSpan>
+                </p>
+              </RegisterButtonDiv>
+            </RegisterForm>
+          )}
+        </Formik>
+      )}
+      {location.pathname === '/login' && (
+        <Formik
+          initialValues={{ email: '', password: '' }}
+          validationSchema={validationLogSchema}
+          onSubmit={(values, { setSubmitting }) => {
+            handleLogSubmit(values);
+            setSubmitting(false);
+          }}
+        >
+          {({ isSubmitting }) => (
+            <LoginForm>
+              <LogFieldDiv>
+                <div>
+                  <RegisterField
+                    type="text"
+                    name="email"
+                    placeholder="Email address"
+                  />
+                  <Error name="email" component="div" />
+                </div>
 
-      <Formik
-        initialValues={{ name: '', email: '', phone: '', password: '' }}
-        validationSchema={validationSchema}
-        onSubmit={(values, { setSubmitting }) => {
-          handleSubmit(values);
-          setSubmitting(false);
-        }}
-      >
-        {({ isSubmitting }) => (
-          <RegisterForm>
-            <RegisterFieldDiv>
-              <div>
-                <RegisterField
-                  type="text"
-                  name="name"
-                  placeholder="User Name"
-                />
-                <Error name="name" component="div" />
-              </div>
-              <div>
-                <RegisterField
-                  type="text"
-                  name="email"
-                  placeholder="Email address"
-                />
-                <Error name="email" component="div" />
-              </div>
-              <div>
-                <RegisterField
-                  type="text"
-                  name="phone"
-                  placeholder="Phone number"
-                />
-                <Error name="phone" component="div" />
-              </div>
-              <div>
-                <RegisterField
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                />
-                <Error name="password" component="div" />
-              </div>
-            </RegisterFieldDiv>
-            <RegisterButtonDiv>
-              <RegisterButton type="submit" disabled={isSubmitting}>
-                Register
-              </RegisterButton>
-              <p>
-                Already have an account? <LogInSpan>Login</LogInSpan>
-              </p>
-            </RegisterButtonDiv>
-          </RegisterForm>
-        )}
-      </Formik>
+                <div>
+                  <RegisterField
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                  <Error name="password" component="div" />
+                </div>
+              </LogFieldDiv>
+              <RegisterButtonDiv>
+                <RegisterButton type="submit" disabled={isSubmitting}>
+                  Login
+                </RegisterButton>
+                <p>
+                  Don't have an account yet?
+                  <LogInSpan onClick={toRegistration}>Registration</LogInSpan>
+                </p>
+              </RegisterButtonDiv>
+            </LoginForm>
+          )}
+        </Formik>
+      )}
     </RegisterContainer>
   );
 };

@@ -4,7 +4,7 @@ import SharedLayout from './SharedLayout/SharedLayout';
 
 const Home = lazy(() => import('./Home/Home'));
 const Registration = lazy(() => import('./Register/Register'));
-// const Login = lazy(() => import('./components/Login/Login'));
+// const Login = lazy(() => import('./Login/Login'));
 const MedicineStore = lazy(() => import('./MedicineStore/MedicineStore'));
 const Medicine = lazy(() => import('./Medicine/Medicine'));
 const Product = lazy(() => import('./Drug/Drug'));
@@ -21,7 +21,8 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/register" element={<Registration />}></Route>
-            <Route path="/login" element={<Cart />}></Route>
+            {/* <Route path="/login" element={<Login />}></Route> */}
+            <Route path="/login" element={<Registration />}></Route>
             <Route path="/medicine-store" element={<MedicineStore />}></Route>
             <Route path="/medicine" element={<Medicine />}></Route>
             <Route path="/product" element={<Product />}></Route>

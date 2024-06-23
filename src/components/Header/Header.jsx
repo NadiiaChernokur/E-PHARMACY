@@ -30,44 +30,49 @@ const Header = () => {
 
         <LogoText $isHomePage={isHomePage}>E-Pharmacy</LogoText>
       </LogoDiv>
-      <NavDiv>
-        <NavLink to="/home">
-          <NavParagraf>
-            <NavParagrafInner $isActive={location.pathname === '/home'}>
-              Home
-            </NavParagrafInner>
-          </NavParagraf>
-        </NavLink>
-        <MidleDiv>
-          <InnerDiv></InnerDiv>
-        </MidleDiv>
-        <NavLink to="/medicine-store">
-          <NavParagraf>
-            <NavParagrafInner
-              $isActive={location.pathname === '/medicine-store'}
-            >
-              Medicine store
-            </NavParagrafInner>
-          </NavParagraf>
-        </NavLink>
-        <MidleDiv>
-          <InnerDiv></InnerDiv>
-        </MidleDiv>
-        <NavLink to="/medicine">
-          <NavParagraf>
-            <NavParagrafInner
-              $isActive={
-                location.pathname === '/medicine' ||
-                location.pathname === '/product'
-              }
-            >
-              Medicine
-            </NavParagrafInner>
-          </NavParagraf>
-        </NavLink>
-      </NavDiv>
+      {location.pathname !== '/register' && location.pathname !== '/login' && (
+        <NavDiv>
+          <NavLink to="/home">
+            <NavParagraf>
+              <NavParagrafInner $isActive={location.pathname === '/home'}>
+                Home
+              </NavParagrafInner>
+            </NavParagraf>
+          </NavLink>
+          <MidleDiv>
+            <InnerDiv></InnerDiv>
+          </MidleDiv>
+          <NavLink to="/medicine-store">
+            <NavParagraf>
+              <NavParagrafInner
+                $isActive={location.pathname === '/medicine-store'}
+              >
+                Medicine store
+              </NavParagrafInner>
+            </NavParagraf>
+          </NavLink>
+          <MidleDiv>
+            <InnerDiv></InnerDiv>
+          </MidleDiv>
+          <NavLink to="/medicine">
+            <NavParagraf>
+              <NavParagrafInner
+                $isActive={
+                  location.pathname === '/medicine' ||
+                  location.pathname === '/product'
+                }
+              >
+                Medicine
+              </NavParagrafInner>
+            </NavParagraf>
+          </NavLink>
+        </NavDiv>
+      )}
+
       <RegDiv>
-        <RegButton>Register</RegButton>
+        <NavLink to="/register">
+          <RegButton>Register</RegButton>
+        </NavLink>
         <LoginButton $isHomePage={isHomePage}>Login</LoginButton>
       </RegDiv>
       {/* <div>

@@ -4,10 +4,18 @@ export const MedicineStoreContainer = styled.div`
   padding: 72px 20px;
   margin: auto;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 43px;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 114%;
+  color: #1d1e21;
 `;
 export const MedicineStoreUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  gap: 20px;
 `;
 export const MedicineStoreLi = styled.li`
   border: 1.15px solid #f1f1f1;
@@ -21,6 +29,9 @@ export const MedicineStoreLi = styled.li`
   font-size: 20px;
   line-height: 140%;
   color: #1d1e21;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 export const MedicineStoreName = styled.p`
   margin-bottom: 20px;
@@ -32,7 +43,7 @@ export const MedicineStoreAdres = styled.div`
   color: #93939a;
   display: flex;
   gap: 8px;
-  margin-bottom: 14px;
+  /* margin-bottom: 14px; */
 `;
 export const MedicineStoreVisiteDiv = styled.div`
   margin-top: 36px;

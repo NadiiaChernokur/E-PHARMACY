@@ -1,3 +1,4 @@
+import { useLocation, useParams } from 'react-router-dom';
 import {
   DrugAddButton,
   DrugButtonsDiv,
@@ -7,23 +8,28 @@ import {
   DrugImgDiv,
   DrugInfDiv,
   DrugNameDiv,
+  InformDiv,
   PlusMinusButton,
   PlusMinusDiv,
 } from './Drug.styled';
 
-const Drug = () => {
+const Drug = ({ product }) => {
+  const location = useLocation();
+  const { item } = location.state || {};
+  console.log(item);
+
   return (
     <DrugContainer>
       <DrugCart>
         <DrugImgDiv>
-          <img src="" alt=""></img>
+          <img src={item.photo} alt={item.name} width="100%"></img>
         </DrugImgDiv>
         <DrugInfDiv>
           <DrugNameDiv>
-            <p>Moringa</p>
-            <p>৳470</p>
+            <p>{item.name}</p>
+            <p>৳{item.price}</p>
           </DrugNameDiv>
-          <DrugFirm>Brand: Roofing (Asphalt)</DrugFirm>
+          <DrugFirm>Brand:{item.suppliers}</DrugFirm>
           <DrugButtonsDiv>
             <PlusMinusDiv>
               <PlusMinusButton>+</PlusMinusButton>
@@ -34,7 +40,7 @@ const Drug = () => {
           </DrugButtonsDiv>
         </DrugInfDiv>
       </DrugCart>
-      <div>
+      <InformDiv>
         <div>
           <button>Description</button>
           <button>Reviews</button>
@@ -59,7 +65,7 @@ const Drug = () => {
             <span></span>
           </p>
         </div>
-      </div>
+      </InformDiv>
     </DrugContainer>
   );
 };

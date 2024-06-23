@@ -24,6 +24,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getCategories, getProducts } from '../../redux/operation';
 import Paginations from 'components/Pagination/Pagination';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
   keyword: Yup.string(),
@@ -38,6 +39,7 @@ const Medicine = () => {
   const [limit, setLimit] = useState(12);
   const [totalPages, setTotalPages] = useState(0);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -82,6 +84,9 @@ const Medicine = () => {
   };
   const toTotalPege = totP => {
     setTotalPages(totP);
+  };
+  const toProduct = item => {
+    navigate('/product/', { state: { item } });
   };
 
   return (
@@ -151,7 +156,9 @@ const Medicine = () => {
               <MedicineFirm>{item.suppliers}</MedicineFirm>
               <ButtonsDiv>
                 <MedicineAddButton>Add to cart</MedicineAddButton>
-                <MedicineDetailsButton>Details</MedicineDetailsButton>
+                <MedicineDetailsButton onClick={() => toProduct(item)}>
+                  Details
+                </MedicineDetailsButton>
               </ButtonsDiv>
             </MedicineInfDiv>
           </MedicineLi>

@@ -55,7 +55,12 @@ const Header = () => {
         </MidleDiv>
         <NavLink to="/medicine">
           <NavParagraf>
-            <NavParagrafInner $isActive={location.pathname === '/medicine'}>
+            <NavParagrafInner
+              $isActive={
+                location.pathname === '/medicine' ||
+                location.pathname === '/product'
+              }
+            >
               Medicine
             </NavParagrafInner>
           </NavParagraf>
@@ -63,7 +68,7 @@ const Header = () => {
       </NavDiv>
       <RegDiv>
         <RegButton>Register</RegButton>
-        <LoginButton>Login</LoginButton>
+        <LoginButton $isHomePage={isHomePage}>Login</LoginButton>
       </RegDiv>
       {/* <div>
         <NavLink>

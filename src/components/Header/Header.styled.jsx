@@ -81,6 +81,6 @@ export const LoginButton = styled.button`
   font-weight: 400;
   font-size: 14px;
   line-height: 100%;
-  color: #59b17a;
+  color: ${({ $isHomePage }) => ($isHomePage ? ' #fff' : '#59b17a')};
   text-decoration: underline;
 `;

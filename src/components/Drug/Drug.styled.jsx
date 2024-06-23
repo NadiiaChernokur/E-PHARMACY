@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 export const DrugContainer = styled.div`
-  margin: 72px 20px;
+  margin: 72px auto;
   display: flex;
   gap: 20px;
+  justify-content: center;
 `;
 
 export const DrugCart = styled.div`
@@ -10,6 +11,7 @@ export const DrugCart = styled.div`
   width: 364px;
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   gap: 20px;
 `;
 export const DrugImgDiv = styled.div`
@@ -25,6 +27,9 @@ export const DrugInfDiv = styled.div`
   height: 174px;
   background: #fff;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 export const DrugNameDiv = styled.div`
   display: flex;
@@ -44,10 +49,12 @@ export const DrugFirm = styled.p`
 export const DrugButtonsDiv = styled.div`
   display: flex;
   justify-content: space-between;
+  border-radius: 60px;
 `;
 
 export const DrugAddButton = styled.button`
   border-radius: 60px;
+  border: none;
   padding: 13px 32px;
   width: 140px;
   height: 44px;
@@ -59,12 +66,27 @@ export const DrugAddButton = styled.button`
 `;
 export const PlusMinusDiv = styled.div`
   border-radius: 60px;
-  padding: 13px 32px;
-  width: 108px;
-  height: 44px;
   display: flex;
   gap: 12px;
+  width: 108px;
+  height: 44px;
+  padding: 12px 18px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: center;
 `;
 export const PlusMinusButton = styled.button`
   color: #59b17a;
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 500;
+`;
+
+export const InformDiv = styled.div`
+  border-radius: 27px;
+  width: 800px;
+  height: 709px;
+  background: #fff;
+  padding: 40px;
 `;

@@ -4,6 +4,7 @@ import {
   getNearestStore,
   getProducts,
   getReviews,
+  getStore,
 } from './operation';
 
 const initialState = {
@@ -11,7 +12,7 @@ const initialState = {
   productsArray: [],
   nearestStore: [],
   reviews: [],
-  //   location: [],
+  store: [],
   //   noticesResponse: [],
   //   newPet: [],
   //   species: [],
@@ -66,11 +67,11 @@ const getReviewsFulfilled = (state, action) => {
 //   state.isLoading = false;
 //   state.error = null;
 // };
-// const getSpeciesFulfilled = (state, action) => {
-//   state.isLoading = false;
-//   state.error = null;
-//   state.species = action.payload;
-// };
+const getStoreFulfilled = (state, action) => {
+  state.isLoading = false;
+  state.error = null;
+  state.store = action.payload;
+};
 // const logOutFulfilled = state => {
 //   state.isLoading = false;
 //   state.error = null;
@@ -131,10 +132,10 @@ const farmaSlice = createSlice({
       .addCase(getNearestStore.rejected, handleRejected)
       .addCase(getReviews.pending, handlePending)
       .addCase(getReviews.fulfilled, getReviewsFulfilled)
-      .addCase(getReviews.rejected, handleRejected),
-  //   .addCase(getNoticesResponse.pending, handlePending)
-  //   .addCase(getNoticesResponse.fulfilled, getNoticesResponseFulfilled)
-  //   .addCase(getNoticesResponse.rejected, handleRejected)
+      .addCase(getReviews.rejected, handleRejected)
+      .addCase(getStore.pending, handlePending)
+      .addCase(getStore.fulfilled, getStoreFulfilled)
+      .addCase(getStore.rejected, handleRejected),
   //   .addCase(toFavoriteAdd.pending, handlePending)
   //   .addCase(toFavoriteAdd.fulfilled, addToFavoriteFulfilled)
   //   .addCase(toFavoriteAdd.rejected, handleRejected)

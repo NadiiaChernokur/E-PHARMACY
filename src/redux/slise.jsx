@@ -5,6 +5,7 @@ import {
   getProducts,
   getReviews,
   getStore,
+  registration,
 } from './operation';
 
 const initialState = {
@@ -17,7 +18,7 @@ const initialState = {
   //   newPet: [],
   //   species: [],
   //   logIn: [],
-  //   registr: [],
+  registr: [],
   //   user: [],
   favoriteArray: [],
   isLoading: false,
@@ -84,11 +85,11 @@ const getStoreFulfilled = (state, action) => {
 //   state.error = null;
 //   state.logIn = action.payload;
 // };
-// const registrFulfilled = (state, action) => {
-//   state.isLoading = false;
-//   state.error = null;
-//   state.registr = action.payload;
-// };
+const registrationFulfilled = (state, action) => {
+  state.isLoading = false;
+  state.error = null;
+  state.registr = action.payload;
+};
 // const getCurrentUserFulfilled = (state, action) => {
 //   state.isLoading = false;
 //   state.error = null;
@@ -135,10 +136,10 @@ const farmaSlice = createSlice({
       .addCase(getReviews.rejected, handleRejected)
       .addCase(getStore.pending, handlePending)
       .addCase(getStore.fulfilled, getStoreFulfilled)
-      .addCase(getStore.rejected, handleRejected),
-  //   .addCase(toFavoriteAdd.pending, handlePending)
-  //   .addCase(toFavoriteAdd.fulfilled, addToFavoriteFulfilled)
-  //   .addCase(toFavoriteAdd.rejected, handleRejected)
+      .addCase(getStore.rejected, handleRejected)
+      .addCase(registration.pending, handlePending)
+      .addCase(registration.fulfilled, registrationFulfilled)
+      .addCase(registration.rejected, handleRejected),
   //   .addCase(toFavoriteRemove.pending, handlePending)
   //   .addCase(toFavoriteRemove.fulfilled, removeFulfilled)
   //   .addCase(toFavoriteRemove.rejected, handleRejected)

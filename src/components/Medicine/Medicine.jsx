@@ -86,7 +86,7 @@ const Medicine = () => {
     setTotalPages(totP);
   };
   const toProduct = item => {
-    navigate('/product/', { state: { item } });
+    navigate('/product', { state: { item } });
   };
 
   return (

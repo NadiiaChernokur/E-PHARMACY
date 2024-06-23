@@ -90,3 +90,24 @@ export const InformDiv = styled.div`
   background: #fff;
   padding: 40px;
 `;
+export const InformButtonsDiv = styled.div`
+  display: flex;
+  gap: 8px;
+  margin-bottom: 40px;
+`;
+export const InformButton = styled.button`
+  border-radius: 40px;
+  border: none;
+  padding: 8px 25px;
+  width: 120px;
+  height: 33px;
+  background: #59b17a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.05em;
+  text-align: center;
+  color: #fff;
+`;

@@ -1,4 +1,4 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import {
   DrugAddButton,
   DrugButtonsDiv,
@@ -8,10 +8,14 @@ import {
   DrugImgDiv,
   DrugInfDiv,
   DrugNameDiv,
+  InformButton,
+  InformButtonsDiv,
   InformDiv,
   PlusMinusButton,
   PlusMinusDiv,
 } from './Drug.styled';
+import Description from 'components/Description/Description';
+import CartReviews from 'components/CartReviews/CartReviews';
 
 const Drug = ({ product }) => {
   const location = useLocation();
@@ -22,7 +26,12 @@ const Drug = ({ product }) => {
     <DrugContainer>
       <DrugCart>
         <DrugImgDiv>
-          <img src={item.photo} alt={item.name} width="100%"></img>
+          <img
+            src={item.photo}
+            alt={item.name}
+            width="100%"
+            height="100%"
+          ></img>
         </DrugImgDiv>
         <DrugInfDiv>
           <DrugNameDiv>
@@ -41,30 +50,12 @@ const Drug = ({ product }) => {
         </DrugInfDiv>
       </DrugCart>
       <InformDiv>
-        <div>
-          <button>Description</button>
-          <button>Reviews</button>
-        </div>
-        <div>
-          <p>
-            <span></span>
-          </p>
-          <p>
-            <span></span>
-          </p>
-          <p>
-            <span></span>
-          </p>
-          <p>
-            <span></span>
-          </p>
-          <p>
-            <span></span>
-          </p>
-          <p>
-            <span></span>
-          </p>
-        </div>
+        <InformButtonsDiv>
+          <InformButton>Description</InformButton>
+          <InformButton>Reviews</InformButton>
+        </InformButtonsDiv>
+        {/* <Description /> */}
+        <CartReviews />
       </InformDiv>
     </DrugContainer>
   );

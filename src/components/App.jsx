@@ -3,9 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import SharedLayout from './SharedLayout/SharedLayout';
 
 const Home = lazy(() => import('./Home/Home'));
-// const Registration = lazy(() =>
-//   import('./components/Registration/Registration')
-// );
+const Registration = lazy(() => import('./Register/Register'));
 // const Login = lazy(() => import('./components/Login/Login'));
 const MedicineStore = lazy(() => import('./MedicineStore/MedicineStore'));
 const Medicine = lazy(() => import('./Medicine/Medicine'));
@@ -22,6 +20,8 @@ const App = () => {
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<Home />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/register" element={<Registration />}></Route>
+            <Route path="/login" element={<Cart />}></Route>
             <Route path="/medicine-store" element={<MedicineStore />}></Route>
             <Route path="/medicine" element={<Medicine />}></Route>
             <Route path="/product" element={<Product />}></Route>

@@ -16,7 +16,7 @@ import {
 } from './Register.styled';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { registration } from '../../redux/operation';
+import { logIn, registration } from '../../redux/operation';
 import photo from '../../img/white round pill.png';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -53,15 +53,25 @@ const Register = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
+
   const handleSubmit = async values => {
     console.log(values);
     const res = await dispatch(registration(values));
     console.log(res);
   };
+
   const handleLogSubmit = async values => {
     console.log(values);
-    const res = await dispatch(registration(values));
-    console.log(res);
+    const res = await dispatch(logIn(values));
+    if (res.error?.message === 'Rejected') {
+      console.log(res.payload);
+    } else {
+      console.log(res.payload);
+    }
+
+    // if (logIn.rejected.match(res)) {
+    //   console.log(res.payload);
+    // }
   };
   const toLogin = () => {
     navigate('/login');

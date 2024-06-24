@@ -11,12 +11,15 @@ const clearToken = () => {
 };
 export const logIn = createAsyncThunk('logIn', async (data, thunkAPI) => {
   try {
-    const respons = await axios.post(`/users/signin`, data);
-
+    const respons = await axios.post(`/api/user/login`, data);
     safeToken(respons.data.token);
+
     return respons.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    if (error.response && error.response.data) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+    return thunkAPI.rejectWithValue({ message: error.message });
   }
 });
 export const registration = createAsyncThunk(
@@ -25,11 +28,13 @@ export const registration = createAsyncThunk(
     try {
       console.log(data);
       const respons = await axios.post(`api/user/register`, data);
-
       safeToken(respons.data.token);
       return respons.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.response && error.response.data) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue({ message: error.message });
     }
   }
 );

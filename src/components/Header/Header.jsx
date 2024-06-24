@@ -15,21 +15,26 @@ import {
 // import sprite from '../../sprite.svg';
 import logo from '../../img/MaskLogo.png';
 import logoH from '../../img/MaskG.png';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/home' || location.pathname === '/';
+  const user = useSelector(state => state.logIn);
+  console.log(user.user);
   return (
     <HeaderContainer>
-      <LogoDiv>
-        {isHomePage ? (
-          <img src={logoH} alt="Logo"></img>
-        ) : (
-          <img src={logo} alt="Logo"></img>
-        )}
+      <NavLink to="/home">
+        <LogoDiv>
+          {isHomePage ? (
+            <img src={logoH} alt="Logo"></img>
+          ) : (
+            <img src={logo} alt="Logo"></img>
+          )}
 
-        <LogoText $isHomePage={isHomePage}>E-Pharmacy</LogoText>
-      </LogoDiv>
+          <LogoText $isHomePage={isHomePage}>E-Pharmacy</LogoText>
+        </LogoDiv>
+      </NavLink>
       {location.pathname !== '/register' && location.pathname !== '/login' && (
         <NavDiv>
           <NavLink to="/home">

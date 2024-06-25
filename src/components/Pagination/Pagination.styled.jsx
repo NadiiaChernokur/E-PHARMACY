@@ -64,7 +64,7 @@ export const PageSpanActiv = styled.span`
   height: 44px;
   border-radius: 100%;
   border: none;
-  background: #f6b83d;
+  background: #59b17a;
   color: #fff;
   font-weight: 700;
   font-size: 18px;

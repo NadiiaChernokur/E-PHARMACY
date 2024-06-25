@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   CartButtonsDiv,
   CartProductButtonsDiv,
@@ -11,6 +12,13 @@ import {
 } from './CartProducts.styled';
 
 const CartProducts = () => {
+  const [quantity, setQuantity] = useState(1);
+  const addQuantity = () => {
+    setQuantity(prev => prev + 1);
+  };
+  const minusQuantity = () => {
+    setQuantity(prev => (prev === 1 ? prev : prev - 1));
+  };
   return (
     <CartProductUl>
       <CartProductLi>
@@ -27,9 +35,13 @@ const CartProducts = () => {
           </div>
           <CartButtonsDiv>
             <CartProductButtonsDiv>
-              <CartProductPlusMinusButton>+</CartProductPlusMinusButton>
+              <CartProductPlusMinusButton onClick={addQuantity}>
+                +
+              </CartProductPlusMinusButton>
               <p>1</p>
-              <CartProductPlusMinusButton>-</CartProductPlusMinusButton>
+              <CartProductPlusMinusButton onClick={minusQuantity}>
+                -
+              </CartProductPlusMinusButton>
             </CartProductButtonsDiv>
             <CartProductRemove>Remove</CartProductRemove>
           </CartButtonsDiv>

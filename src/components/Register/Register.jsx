@@ -19,6 +19,8 @@ import { useDispatch } from 'react-redux';
 import { logIn, registration } from '../../redux/operation';
 import photo from '../../img/white round pill.png';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -61,12 +63,13 @@ const Register = () => {
   };
 
   const handleLogSubmit = async values => {
-    console.log(values);
     const res = await dispatch(logIn(values));
+    console.log(res);
     if (res.error?.message === 'Rejected') {
-      console.log(res.payload);
+      toast(res.payload.message);
     } else {
-      console.log(res.payload);
+      localStorage.setItem('e-pharmacy', JSON.stringify(res.payload));
+      navigate('/medicine');
     }
 
     // if (logIn.rejected.match(res)) {
@@ -81,6 +84,7 @@ const Register = () => {
   };
   return (
     <RegisterContainer>
+      <ToastContainer toastStyle={{ background: '#f30e0e', color: 'white' }} />
       <RegisterText>
         <h3>
           Your medication, delivered Say goodbye to all

@@ -56,6 +56,7 @@ export const getProducts = createAsyncThunk(
     try {
       const { category, keyword, limit = 12, page = 1 } = data;
       console.log(category);
+      console.log(page);
       const respons = await axios.get(
         `api/products?category=${category}&keyword=${keyword}&limit=${limit}&page=${page}`
       );
@@ -92,6 +93,20 @@ export const getReviews = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const respons = await axios.get(`/api/customer-reviews`);
+      console.log(respons.data);
+      return respons.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateCart = createAsyncThunk(
+  'updateToCart',
+  async (data, thunkAPI) => {
+    try {
+      console.log(data);
+      const respons = await axios.put(`/api/cart/update`, data);
       console.log(respons.data);
       return respons.data;
     } catch (error) {

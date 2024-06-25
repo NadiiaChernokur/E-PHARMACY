@@ -11,6 +11,7 @@ import sprite from '../../img/sprite.svg';
 
 const Paginations = ({ subtract, add, page, first, last, total }) => {
   const [getTotal, setTotal] = useState(0);
+
   useEffect(() => {
     setTotal(total);
   }, [total]);
@@ -24,7 +25,7 @@ const Paginations = ({ subtract, add, page, first, last, total }) => {
           height="20"
           style={{
             transform: 'scaleX(-1)',
-            marginRight: '-25px',
+            marginRight: '-19px',
             fillOpacity: pegeGetFirst,
           }}
         >
@@ -65,7 +66,7 @@ const Paginations = ({ subtract, add, page, first, last, total }) => {
         <svg
           width="20"
           height="20"
-          style={{ marginRight: '-25px', fillOpacity: pegeGetTotal }}
+          style={{ marginRight: '-19px', fillOpacity: pegeGetTotal }}
         >
           <use href={`${sprite}#fi-rr-angle-small-left`}></use>
         </svg>

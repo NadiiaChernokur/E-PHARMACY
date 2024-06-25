@@ -12,7 +12,6 @@ export const CartMain = styled.div`
 export const CartFormDiv = styled.div`
   border-radius: 27px;
   width: 628px;
-  height: 883px;
   background: #fff;
   padding: 40px;
   font-weight: 400;
@@ -51,6 +50,7 @@ export const CartForm = styled.form`
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 40px;
+  /* margin-bottom: 40px; */
 `;
 export const CartPriceDiv = styled.div`
   border-radius: 8px;
@@ -77,4 +77,16 @@ export const CartFormButton = styled.button`
   font-size: 14px;
   line-height: 129%;
   color: #fff;
+`;
+export const CartForHr = styled.hr`
+  width: 530px;
+  /* margin: auto; */
+  margin: 40px auto;
+  border: 0.5px solid rgba(29, 30, 33, 0.1);
+`;
+export const CartRadioDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
 `;

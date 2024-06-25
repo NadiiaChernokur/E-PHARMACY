@@ -2,6 +2,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import {
   CartContainer,
+  CartForHr,
   CartForm,
   CartFormButton,
   CartFormDiv,
@@ -10,7 +11,9 @@ import {
   CartLabel,
   CartMain,
   CartPriceDiv,
+  CartRadioDiv,
 } from './CartPage.styled';
+import CartProducts from 'components/CartProducts/CartProducts';
 
 const validationSchema = yup.object({
   name: yup.string().required('Name is required'),
@@ -114,13 +117,14 @@ const CartPage = () => {
                 <div>{formik.errors.address}</div>
               ) : null}
             </div>
-            <div className="form-group">
+            <div>
+              <CartForHr />
               <CartFormHead>Payment Method</CartFormHead>
               <p>
                 You can pay us in a multiple way in our payment gateway system.
               </p>
-              <div role="group" aria-labelledby="paymentMethod">
-                <label className="custom-radio">
+              <CartRadioDiv role="group" aria-labelledby="paymentMethod">
+                <label>
                   <input
                     type="radio"
                     name="paymentMethod"
@@ -142,11 +146,12 @@ const CartPage = () => {
                   />
                   <span className="custom-radio-label">Bank</span>
                 </label>
-              </div>
+              </CartRadioDiv>
               {formik.touched.paymentMethod && formik.errors.paymentMethod ? (
                 <div className="error">{formik.errors.paymentMethod}</div>
               ) : null}
             </div>
+            <CartForHr />
             <CartFormHead>Order details </CartFormHead>
             <p>
               Shipping and additionnal costs are calculated based on values you
@@ -159,9 +164,8 @@ const CartPage = () => {
             <CartFormButton type="submit">Place order</CartFormButton>
           </CartForm>
         </CartFormDiv>
-        <div
-          style={{ width: '460px', height: '360px', background: 'pink' }}
-        ></div>
+
+        <CartProducts />
       </CartMain>
     </CartContainer>
   );

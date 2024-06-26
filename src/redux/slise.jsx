@@ -5,6 +5,7 @@ import {
   getProducts,
   getReviews,
   getStore,
+  getUser,
   logIn,
   registration,
   updateCart,
@@ -19,7 +20,7 @@ const initialState = {
   //   noticesResponse: [],
   //   newPet: [],
   //   species: [],
-  logIn: [],
+  user: [],
   registr: [],
   cart: [],
   favoriteArray: [],
@@ -85,18 +86,18 @@ const getStoreFulfilled = (state, action) => {
 const loginFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.logIn = action.payload;
+  state.user = action.payload;
 };
 const registrationFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
   state.registr = action.payload;
 };
-// const getCurrentUserFulfilled = (state, action) => {
-//   state.isLoading = false;
-//   state.error = null;
-//   state.user = action.payload;
-// };
+const userFulfilled = (state, action) => {
+  state.isLoading = false;
+  state.error = null;
+  state.user = action.payload;
+};
 const updateCartFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
@@ -147,10 +148,10 @@ const farmaSlice = createSlice({
       .addCase(logIn.rejected, handleRejected)
       .addCase(updateCart.pending, handlePending)
       .addCase(updateCart.fulfilled, updateCartFulfilled)
-      .addCase(updateCart.rejected, handleRejected),
-  //   .addCase(deletePet.pending, handlePending)
-  //   .addCase(deletePet.fulfilled, deletePetFulfilled)
-  //   .addCase(deletePet.rejected, handleRejected)
+      .addCase(updateCart.rejected, handleRejected)
+      .addCase(getUser.pending, handlePending)
+      .addCase(getUser.fulfilled, userFulfilled)
+      .addCase(getUser.rejected, handleRejected),
   //   .addCase(getSpecies.pending, handlePending)
   //   .addCase(getSpecies.fulfilled, getSpeciesFulfilled)
   //   .addCase(getSpecies.rejected, handleRejected)

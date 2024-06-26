@@ -128,3 +128,27 @@ export const updateCart = createAsyncThunk(
     }
   }
 );
+
+export const getProductToId = createAsyncThunk(
+  'getProductToId',
+  async (data, thunkAPI) => {
+    try {
+      console.log(data);
+      const respons = await axios.post(`/api/products/getByIds`, { ids: data });
+      console.log(respons.data);
+      return respons.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getUser = createAsyncThunk('getUser', async (data, thunkAPI) => {
+  try {
+    const respons = await axios.get(`/api/user/user-info`);
+    console.log(respons);
+    return respons.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});

@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import {
   HeaderCartDiv,
   HeaderCartNumber,
@@ -21,42 +21,50 @@ import sprite from '../../img/sprite.svg';
 import logo from '../../img/MaskLogo.png';
 import logoH from '../../img/MaskG.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { logOut, safeToken } from '../../redux/operation';
+import { getUser, logOut, safeToken } from '../../redux/operation';
 import { useEffect, useState } from 'react';
 
 const Header = () => {
   const [isToken, setIsToken] = useState(false);
   const [userName, setUserName] = useState('');
+  const [cartNamber, setCartNumber] = useState(0);
   const location = useLocation();
   const dispatch = useDispatch();
+  // const navigate = useNavigate();
   const isHomePage = location.pathname === '/home' || location.pathname === '/';
-  const user = useSelector(state => state.logIn);
-  console.log(user.user);
+  const user = useSelector(state => state.user);
+  console.log(user);
 
   const getFirstLetter = name => {
     return name.charAt(0).toUpperCase();
   };
 
   useEffect(() => {
-    const storedUserData = localStorage.getItem('e-pharmacy');
+    setCartNumber(user.cart.length);
 
-    if (storedUserData && storedUserData !== '[]') {
-      const isToken = JSON.parse(storedUserData);
-      console.log(isToken);
-      if (isToken.token) {
+    const fetchUser = async () => {
+      const storedUserData = localStorage.getItem('e-pharmacy');
+
+      if (storedUserData && storedUserData !== '[]') {
+        const isToken = JSON.parse(storedUserData);
         safeToken(isToken.token);
-        setIsToken(true);
-        setUserName(isToken.user.name);
+        const res = await dispatch(getUser());
+        console.log(res);
+        if (res.payload._id) {
+          setIsToken(true);
+          setUserName(res.payload.name);
+          setCartNumber(res.payload.cart.length);
+        }
       }
-    }
-
-    return;
-  }, []);
+    };
+    fetchUser();
+  }, [dispatch, user.cart.length]);
 
   const toLogOut = async () => {
     const res = await dispatch(logOut());
     console.log(res);
   };
+
   return (
     <HeaderContainer>
       <NavLink to="/home">
@@ -117,9 +125,9 @@ const Header = () => {
         </RegDiv>
       ) : (
         <HeaderRegDiv>
-          <NavLink>
+          <NavLink to="/cart">
             <HeaderCartDiv>
-              <HeaderCartNumber>0</HeaderCartNumber>
+              <HeaderCartNumber>{cartNamber}</HeaderCartNumber>
               <svg width="16" height="16">
                 <use href={`${sprite}#shopping-cart`}></use>
               </svg>
@@ -127,7 +135,7 @@ const Header = () => {
           </NavLink>
           <NavLink>
             <HeaderNameDiv>
-              {getFirstLetter(user.user.name) || getFirstLetter(userName)}
+              {getFirstLetter(user?.name) || getFirstLetter(userName)}
             </HeaderNameDiv>
           </NavLink>
           <NavLink>

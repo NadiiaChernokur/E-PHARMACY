@@ -84,3 +84,56 @@ export const LoginButton = styled.button`
   color: ${({ $isHomePage }) => ($isHomePage ? ' #fff' : '#59b17a')};
   text-decoration: underline;
 `;
+export const LogoutButton = styled.button`
+  border: 1px solid rgba(89, 177, 122, 0.5);
+  border-radius: 60px;
+  padding: 16px 32px;
+  width: 115px;
+  height: 46px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  color: #59b17a;
+`;
+export const HeaderCartDiv = styled.div`
+  width: 44px;
+  height: 44px;
+  border-radius: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
+export const HeaderRegDiv = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+export const HeaderNameDiv = styled.div`
+  width: 44px;
+  height: 44px;
+  display: flex;
+  border-radius: 100%;
+  background: rgba(89, 177, 122, 0.1);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 140%;
+  color: #59b17a;
+  align-items: center;
+  justify-content: center;
+`;
+export const HeaderCartNumber = styled.div`
+  border-radius: 100%;
+  background: #e7f1ed;
+  display: flex;
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: #59b17a;
+  position: absolute;
+  top: 0;
+  right: 0;
+`;

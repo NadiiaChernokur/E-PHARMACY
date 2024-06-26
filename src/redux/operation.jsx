@@ -38,6 +38,20 @@ export const registration = createAsyncThunk(
     }
   }
 );
+export const logOut = createAsyncThunk('logOut', async (data, thunkAPI) => {
+  try {
+    const respons = await axios.post(`/api/user/logout`);
+    clearToken();
+
+    return respons.data;
+  } catch (error) {
+    if (error.response && error.response.data) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+    return thunkAPI.rejectWithValue({ message: error.message });
+  }
+});
+
 export const getCategories = createAsyncThunk(
   'categories',
   async (data, thunkAPI) => {

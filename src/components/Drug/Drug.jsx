@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   DrugAddButton,
   DrugButtonsDiv,
@@ -22,16 +22,22 @@ import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Drug = ({ product }) => {
+const Drug = () => {
   const [activ, setActive] = useState('description');
   const [quantity, setQuantity] = useState(1);
+  const [price, setPrice] = useState(0);
   const [isToken, setIsToken] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const location = useLocation();
   const { item } = location.state || {};
-  console.log(item);
 
   useEffect(() => {
+    if (!item) {
+      navigate('/medicine');
+      return;
+    }
+    setPrice(item.price);
     const storedUserData = localStorage.getItem('e-pharmacy');
 
     if (storedUserData && storedUserData !== '[]') {
@@ -44,19 +50,21 @@ const Drug = ({ product }) => {
     }
 
     return;
-  }, [dispatch]);
+  }, [item, navigate]);
 
   const addQuantity = () => {
     setQuantity(prev => prev + 1);
+    setPrice(prev => parseFloat((prev + item.price).toFixed(2)));
   };
   const minusQuantity = () => {
-    setQuantity(prev => (prev === 1 ? prev : prev - 1));
+    if (quantity === 1) return;
+    setQuantity(prev => prev - 1);
+    setPrice(prev => parseFloat((prev - item.price).toFixed(2)));
   };
-  const toAddToCart = async id => {
-    console.log(id);
 
+  const toAddToCart = async id => {
     if (isToken) {
-      const res = await dispatch(updateCart({ quantity: 1, productId: id }));
+      const res = await dispatch(updateCart({ quantity, productId: id }));
       console.log(res);
       toast('The product has been added to the cart');
     } else {
@@ -70,25 +78,27 @@ const Drug = ({ product }) => {
       <DrugCart>
         <DrugImgDiv>
           <img
-            src={item.photo}
-            alt={item.name}
+            src={item?.photo}
+            alt={item?.name}
             width="100%"
             height="100%"
           ></img>
         </DrugImgDiv>
         <DrugInfDiv>
           <DrugNameDiv>
-            <p>{item.name}</p>
-            <p>৳{item.price}</p>
+            <p>{item?.name}</p>
+            <p>৳{price?.toFixed(2)}</p>
           </DrugNameDiv>
-          <DrugFirm>Brand:{item.suppliers}</DrugFirm>
+          <DrugFirm>Brand:{item?.suppliers}</DrugFirm>
           <DrugButtonsDiv>
             <PlusMinusDiv>
               <PlusMinusButton onClick={addQuantity}>+</PlusMinusButton>
-              <p>1</p>
+              <p>{quantity}</p>
               <PlusMinusButton onClick={minusQuantity}>-</PlusMinusButton>
             </PlusMinusDiv>
-            <DrugAddButton onClick={toAddToCart}>Add to cart</DrugAddButton>
+            <DrugAddButton onClick={() => toAddToCart(item._id)}>
+              Add to cart
+            </DrugAddButton>
           </DrugButtonsDiv>
         </DrugInfDiv>
       </DrugCart>

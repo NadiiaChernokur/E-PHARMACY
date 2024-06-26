@@ -66,6 +66,7 @@ const Medicine = () => {
       }
       setOptions(categ.payload);
     };
+
     if (filter) {
       return;
     }

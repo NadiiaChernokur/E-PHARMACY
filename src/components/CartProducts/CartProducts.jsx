@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import {
   CartButtonsDiv,
+  CartEmpty,
   CartProductButtonsDiv,
   CartProductImgDiv,
   CartProductInfDiv,
@@ -18,7 +19,7 @@ import {
   safeToken,
 } from '../../redux/operation';
 
-const CartProducts = () => {
+const CartProducts = ({ priceChange }) => {
   const [quantities, setQuantities] = useState({});
   const dispatch = useDispatch();
   const [isToken, setIsToken] = useState(false);
@@ -58,18 +59,34 @@ const CartProducts = () => {
     fetchUser();
   }, [dispatch, isToken]);
 
+  const updateTotalPrice = newQuantities => {
+    const totalPrice = cartArray.reduce((total, item) => {
+      const quantity = newQuantities[item._id] || 0;
+      return total + item.price * quantity;
+    }, 0);
+    priceChange(totalPrice);
+  };
+
   const addQuantity = id => {
-    setQuantities(prevQuantities => ({
-      ...prevQuantities,
-      [id]: (prevQuantities[id] || 1) + 1,
-    }));
+    setQuantities(prevQuantities => {
+      const newQuantities = {
+        ...prevQuantities,
+        [id]: (prevQuantities[id] || 1) + 1,
+      };
+      updateTotalPrice(newQuantities);
+      return newQuantities;
+    });
   };
 
   const minusQuantity = id => {
-    setQuantities(prevQuantities => ({
-      ...prevQuantities,
-      [id]: prevQuantities[id] > 1 ? prevQuantities[id] - 1 : 1,
-    }));
+    setQuantities(prevQuantities => {
+      const newQuantities = {
+        ...prevQuantities,
+        [id]: prevQuantities[id] > 1 ? prevQuantities[id] - 1 : 1,
+      };
+      updateTotalPrice(newQuantities);
+      return newQuantities;
+    });
   };
   const toRemoveProduct = async id => {
     const res = await dispatch(removeCartToId(id));
@@ -81,9 +98,13 @@ const CartProducts = () => {
       setQuantities(prevQuantities => {
         const newQuantities = { ...prevQuantities };
         delete newQuantities[id];
+        updateTotalPrice(newQuantities);
         return newQuantities;
       });
     }
+  };
+  const formatPrice = price => {
+    return price.toFixed(2);
   };
   return (
     <>
@@ -103,7 +124,9 @@ const CartProducts = () => {
                 <div>
                   <CartProductNamePrice>
                     <p>{item.name}</p>
-                    <p>৳ {item.price}</p>
+                    <p>
+                      ৳ {formatPrice(item.price * (quantities[item._id] || 1))}
+                    </p>
                   </CartProductNamePrice>
                   <p>For {item.category} Health</p>
                 </div>
@@ -130,7 +153,7 @@ const CartProducts = () => {
           ))}
         </CartProductUl>
       ) : (
-        <div>00000000000000000000</div>
+        <CartEmpty>You don't have any saved products yet</CartEmpty>
       )}
     </>
   );

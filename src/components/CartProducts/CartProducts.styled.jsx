@@ -79,3 +79,12 @@ export const CartButtonsDiv = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+export const CartEmpty = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 140%;
+  color: #1d1e21;
+`;

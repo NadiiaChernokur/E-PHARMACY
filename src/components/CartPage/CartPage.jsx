@@ -17,6 +17,7 @@ import CartProducts from 'components/CartProducts/CartProducts';
 import { useEffect, useState } from 'react';
 import { getProductToId, getUser, safeToken } from '../../redux/operation';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = yup.object({
   name: yup.string().required('Name is required'),
@@ -37,34 +38,27 @@ const validationSchema = yup.object({
 
 const CartPage = () => {
   // const [isToken, setIsToken] = useState(false);
-  // const [cartArray, setCartArray] = useState([]);
-  // const dispatch = useDispatch();
+  const [totalPrice, setTotalPrice] = useState(0);
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     const storedUserData = localStorage.getItem('e-pharmacy');
+  useEffect(() => {
+    const fetchUser = async () => {
+      const storedUserData = localStorage.getItem('e-pharmacy');
 
-  //     if (storedUserData && storedUserData !== '[]') {
-  //       const isToken = JSON.parse(storedUserData);
-  //       safeToken(isToken.token);
-  //       const res = await dispatch(getUser());
-  //       console.log(res);
-  //       if (res.payload._id) {
-  //         setIsToken(true);
-  //         if (res.payload.cart.length > 0) {
-  //           console.log(res.payload.cart);
-  //           const idArray = res.payload.cart.map(item => item.productId);
-  //           console.log(idArray);
-  //           const results = await dispatch(getProductToId(idArray));
-  //           console.log(results);
+      if (storedUserData && storedUserData !== '[]') {
+        const isToken = JSON.parse(storedUserData);
+        safeToken(isToken.token);
+      } else {
+        navigate('/home');
+      }
+    };
+    fetchUser();
+  }, [navigate]);
 
-  //           setCartArray(results.payload);
-  //         }
-  //       }
-  //     }
-  //   };
-  //   fetchUser();
-  // }, [dispatch]);
+  const toNewPrice = val => {
+    setTotalPrice(val);
+  };
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -191,16 +185,13 @@ const CartPage = () => {
             </p>
             <CartPriceDiv>
               <p>Total:</p>
-              <p>৳ 122.00</p>
+              <p>৳ {totalPrice}</p>
             </CartPriceDiv>
             <CartFormButton type="submit">Place order</CartFormButton>
           </CartForm>
         </CartFormDiv>
-        {/* {isToken && cartArray.length !== 0 ? ( */}
-        <CartProducts />
-        {/* ) : (
-          <div>Nichogo nemar</div>
-        )} */}
+
+        <CartProducts priceChange={toNewPrice} />
       </CartMain>
     </CartContainer>
   );

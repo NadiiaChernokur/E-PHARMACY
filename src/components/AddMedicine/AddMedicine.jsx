@@ -7,8 +7,13 @@ import {
   AddMedicinesText,
 } from './AddMedicine.styled';
 import photo from '../../img/Add your image here.png';
+import { useNavigate } from 'react-router-dom';
 
 const AddMedicine = () => {
+  const navigate = useNavigate();
+  const toMedicineStore = () => {
+    navigate('/medicine-store');
+  };
   return (
     <AddMedicinesContainer>
       <AddMedicinesLeft>
@@ -19,7 +24,9 @@ const AddMedicine = () => {
           Enjoy the convenience of having your prescriptions filled from home by
           connecting with your community pharmacy through our online platform.
         </AddMedicinesText>
-        <AddMedicinesButton>Buy medicine</AddMedicinesButton>
+        <AddMedicinesButton onClick={toMedicineStore}>
+          Buy medicine
+        </AddMedicinesButton>
       </AddMedicinesLeft>
       <AddMedicinesImgDiv>
         <img src={photo} alt="Img" width="100%"></img>

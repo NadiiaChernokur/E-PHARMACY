@@ -114,7 +114,8 @@ export const HeaderNameDiv = styled.div`
   height: 44px;
   display: flex;
   border-radius: 100%;
-  background: rgba(89, 177, 122, 0.1);
+  background: ${({ $isHomePage }) =>
+    $isHomePage ? ' #fff' : 'rgba(89, 177, 122, 0.1)'};
   font-weight: 600;
   font-size: 18px;
   line-height: 140%;

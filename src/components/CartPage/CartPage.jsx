@@ -2,6 +2,8 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import {
   CartContainer,
+  CartError,
+  CartErrorRadio,
   CartForHr,
   CartForm,
   CartFormButton,
@@ -15,7 +17,13 @@ import {
 } from './CartPage.styled';
 import CartProducts from 'components/CartProducts/CartProducts';
 import { useEffect, useState } from 'react';
-import { getProductToId, getUser, safeToken } from '../../redux/operation';
+import {
+  clearCart,
+  getProductToId,
+  getUser,
+  safeToken,
+  toOrder,
+} from '../../redux/operation';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -37,9 +45,11 @@ const validationSchema = yup.object({
 });
 
 const CartPage = () => {
-  // const [isToken, setIsToken] = useState(false);
+  const [productArray, setProductArray] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -58,6 +68,18 @@ const CartPage = () => {
   const toNewPrice = val => {
     setTotalPrice(val);
   };
+  const addProdactArray = val => {
+    console.log('ttt', val);
+    setProductArray(val);
+  };
+  const toFetchForm = async val => {
+    const data = { ...val, totalPrice, productArray };
+    console.log(data);
+    const res = await dispatch(toOrder());
+    console.log(res);
+    await dispatch(clearCart());
+    setTotalPrice(0);
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -70,6 +92,7 @@ const CartPage = () => {
     validationSchema: validationSchema,
     onSubmit: values => {
       console.log(values);
+      toFetchForm(values);
     },
   });
   const formatPrice = price => {
@@ -98,7 +121,7 @@ const CartPage = () => {
                 value={formik.values.name}
               />
               {formik.touched.name && formik.errors.name ? (
-                <div>{formik.errors.name}</div>
+                <CartError>{formik.errors.name}</CartError>
               ) : null}
             </div>
 
@@ -113,7 +136,7 @@ const CartPage = () => {
                 value={formik.values.email}
               />
               {formik.touched.email && formik.errors.email ? (
-                <div>{formik.errors.email}</div>
+                <CartError>{formik.errors.email}</CartError>
               ) : null}
             </div>
 
@@ -128,7 +151,7 @@ const CartPage = () => {
                 value={formik.values.phone}
               />
               {formik.touched.phone && formik.errors.phone ? (
-                <div>{formik.errors.phone}</div>
+                <CartError>{formik.errors.phone}</CartError>
               ) : null}
             </div>
 
@@ -143,7 +166,7 @@ const CartPage = () => {
                 value={formik.values.address}
               />
               {formik.touched.address && formik.errors.address ? (
-                <div>{formik.errors.address}</div>
+                <CartError>{formik.errors.address}</CartError>
               ) : null}
             </div>
             <div>
@@ -162,9 +185,9 @@ const CartPage = () => {
                     onBlur={formik.handleBlur}
                     checked={formik.values.paymentMethod === 'Cash On Delivery'}
                   />
-                  <span className="custom-radio-label">Cash On Delivery</span>
+                  <span>Cash On Delivery</span>
                 </label>
-                <label className="custom-radio">
+                <label>
                   <input
                     type="radio"
                     name="paymentMethod"
@@ -173,11 +196,11 @@ const CartPage = () => {
                     onBlur={formik.handleBlur}
                     checked={formik.values.paymentMethod === 'Bank'}
                   />
-                  <span className="custom-radio-label">Bank</span>
+                  <span>Bank</span>
                 </label>
               </CartRadioDiv>
               {formik.touched.paymentMethod && formik.errors.paymentMethod ? (
-                <div className="error">{formik.errors.paymentMethod}</div>
+                <CartErrorRadio>{formik.errors.paymentMethod}</CartErrorRadio>
               ) : null}
             </div>
             <CartForHr />
@@ -194,7 +217,7 @@ const CartPage = () => {
           </CartForm>
         </CartFormDiv>
 
-        <CartProducts priceChange={toNewPrice} />
+        <CartProducts priceChange={toNewPrice} arr={addProdactArray} />
       </CartMain>
     </CartContainer>
   );

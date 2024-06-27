@@ -19,7 +19,7 @@ import {
   safeToken,
 } from '../../redux/operation';
 
-const CartProducts = ({ priceChange }) => {
+const CartProducts = ({ priceChange, arr }) => {
   const [quantities, setQuantities] = useState({});
   const dispatch = useDispatch();
   const [isToken, setIsToken] = useState(false);
@@ -46,6 +46,7 @@ const CartProducts = ({ priceChange }) => {
             }, {});
 
             setQuantities(initialQuantities);
+            arr(initialQuantities);
             const initialTotalPrice = results.payload.reduce((total, item) => {
               const quantity = initialQuantities[item._id] || 0;
               return total + item.price * quantity;
@@ -59,7 +60,7 @@ const CartProducts = ({ priceChange }) => {
       return;
     }
     fetchUser();
-  }, [dispatch, isToken]);
+  }, [arr, dispatch, isToken, priceChange]);
 
   const updateTotalPrice = newQuantities => {
     const totalPrice = cartArray.reduce((total, item) => {
@@ -69,13 +70,15 @@ const CartProducts = ({ priceChange }) => {
     priceChange(totalPrice);
   };
 
-  const addQuantity = id => {
+  const addQuantity = async id => {
     setQuantities(prevQuantities => {
       const newQuantities = {
         ...prevQuantities,
         [id]: (prevQuantities[id] || 1) + 1,
       };
+
       updateTotalPrice(newQuantities);
+      arr(newQuantities);
       return newQuantities;
     });
   };
@@ -87,12 +90,14 @@ const CartProducts = ({ priceChange }) => {
         [id]: prevQuantities[id] > 1 ? prevQuantities[id] - 1 : 1,
       };
       updateTotalPrice(newQuantities);
+      arr(newQuantities);
       return newQuantities;
     });
   };
+
   const toRemoveProduct = async id => {
     const res = await dispatch(removeCartToId(id));
-    console.log(res);
+
     if (res.type === 'removeCart/fulfilled') {
       setCartArray(prevCartArray =>
         prevCartArray.filter(item => item._id !== id)
@@ -101,6 +106,7 @@ const CartProducts = ({ priceChange }) => {
         const newQuantities = { ...prevQuantities };
         delete newQuantities[id];
         updateTotalPrice(newQuantities);
+        arr(newQuantities);
         return newQuantities;
       });
     }

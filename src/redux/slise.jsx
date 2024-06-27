@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  clearCart,
   getCategories,
   getNearestStore,
   getProducts,
@@ -9,6 +10,7 @@ import {
   logIn,
   registration,
   removeCartToId,
+  toOrder,
   updateCart,
 } from './operation';
 
@@ -68,22 +70,21 @@ const getReviewsFulfilled = (state, action) => {
   state.error = null;
   state.reviews = action.payload;
 };
-// const deletePetFulfilled = state => {
-//   state.isLoading = false;
-//   state.error = null;
-// };
+const orderFulfilled = state => {
+  state.isLoading = false;
+  state.error = null;
+};
+const clearCartFulfilled = state => {
+  state.isLoading = false;
+  state.error = null;
+  state.cart = [];
+};
 const getStoreFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
   state.store = action.payload;
 };
-// const logOutFulfilled = state => {
-//   state.isLoading = false;
-//   state.error = null;
-//   state.user = [];
-//   state.logIn = [];
-//   state.registr = [];
-// };
+
 const loginFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
@@ -155,13 +156,13 @@ const farmaSlice = createSlice({
       .addCase(getUser.rejected, handleRejected)
       .addCase(removeCartToId.pending, handlePending)
       .addCase(removeCartToId.fulfilled, removeCartFulfilled)
-      .addCase(removeCartToId.rejected, handleRejected),
-  //   .addCase(logOut.pending, handlePending)
-  //   .addCase(logOut.fulfilled, logOutFulfilled)
-  //   .addCase(logOut.rejected, handleRejected)
-  //   .addCase(logIn.pending, handlePending)
-  //   .addCase(logIn.fulfilled, logInFulfilled)
-  //   .addCase(logIn.rejected, handleRejected)
+      .addCase(removeCartToId.rejected, handleRejected)
+      .addCase(toOrder.pending, handlePending)
+      .addCase(toOrder.fulfilled, orderFulfilled)
+      .addCase(toOrder.rejected, handleRejected)
+      .addCase(clearCart.pending, handlePending)
+      .addCase(clearCart.fulfilled, clearCartFulfilled)
+      .addCase(clearCart.rejected, handleRejected),
   //   .addCase(registration.pending, handlePending)
   //   .addCase(registration.fulfilled, registrFulfilled)
   //   .addCase(registration.rejected, handleRejected)

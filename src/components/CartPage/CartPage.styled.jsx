@@ -90,3 +90,12 @@ export const CartRadioDiv = styled.div`
   gap: 8px;
   margin-top: 20px;
 `;
+export const CartError = styled.div`
+  color: red;
+  position: relative;
+  left: 20px;
+`;
+
+export const CartErrorRadio = styled.div`
+  color: red;
+`;

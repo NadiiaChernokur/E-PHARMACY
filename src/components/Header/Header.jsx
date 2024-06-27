@@ -136,7 +136,7 @@ const Header = () => {
             </HeaderCartDiv>
           </NavLink>
           <NavLink>
-            <HeaderNameDiv>
+            <HeaderNameDiv $isHomePage={isHomePage}>
               {getFirstLetter(user?.name) || getFirstLetter(userName)}
             </HeaderNameDiv>
           </NavLink>

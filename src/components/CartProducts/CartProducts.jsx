@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   CartButtonsDiv,
   CartProductButtonsDiv,
@@ -10,46 +10,129 @@ import {
   CartProductRemove,
   CartProductUl,
 } from './CartProducts.styled';
+import { useDispatch } from 'react-redux';
+import {
+  getProductToId,
+  getUser,
+  removeCartToId,
+  safeToken,
+} from '../../redux/operation';
 
-const CartProducts = ({ array }) => {
-  const [quantity, setQuantity] = useState(1);
-  const addQuantity = () => {
-    setQuantity(prev => prev + 1);
+const CartProducts = () => {
+  const [quantities, setQuantities] = useState({});
+  const dispatch = useDispatch();
+  const [isToken, setIsToken] = useState(false);
+  const [cartArray, setCartArray] = useState([]);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const storedUserData = localStorage.getItem('e-pharmacy');
+
+      if (storedUserData && storedUserData !== '[]') {
+        const isToken = JSON.parse(storedUserData);
+        safeToken(isToken.token);
+        const res = await dispatch(getUser());
+        console.log(res);
+        if (res.payload._id) {
+          setIsToken(true);
+          if (res.payload.cart.length > 0) {
+            console.log(res.payload.cart);
+            const idArray = res.payload.cart.map(item => item.productId);
+            console.log(idArray);
+            const results = await dispatch(getProductToId(idArray));
+            console.log(results);
+
+            setCartArray(results.payload);
+            const initialQuantities = res.payload.cart.reduce((acc, item) => {
+              acc[item.productId] = item.quantity;
+              return acc;
+            }, {});
+            setQuantities(initialQuantities);
+          }
+        }
+      }
+    };
+    if (isToken) {
+      return;
+    }
+    fetchUser();
+  }, [dispatch, isToken]);
+
+  const addQuantity = id => {
+    setQuantities(prevQuantities => ({
+      ...prevQuantities,
+      [id]: (prevQuantities[id] || 1) + 1,
+    }));
   };
-  const minusQuantity = () => {
-    setQuantity(prev => (prev === 1 ? prev : prev - 1));
+
+  const minusQuantity = id => {
+    setQuantities(prevQuantities => ({
+      ...prevQuantities,
+      [id]: prevQuantities[id] > 1 ? prevQuantities[id] - 1 : 1,
+    }));
+  };
+  const toRemoveProduct = async id => {
+    const res = await dispatch(removeCartToId(id));
+    console.log(res);
+    if (res.type === 'removeCart/fulfilled') {
+      setCartArray(prevCartArray =>
+        prevCartArray.filter(item => item._id !== id)
+      );
+      setQuantities(prevQuantities => {
+        const newQuantities = { ...prevQuantities };
+        delete newQuantities[id];
+        return newQuantities;
+      });
+    }
   };
   return (
-    <CartProductUl>
-      {array.map(item => (
-        <CartProductLi>
-          <CartProductImgDiv>
-            <img src="" alt="" width="100%" height="100%"></img>
-          </CartProductImgDiv>
-          <CartProductInfDiv>
-            <div>
-              <CartProductNamePrice>
-                <p>Vitamin C Medicine</p>
-                <p>৳ 90.00</p>
-              </CartProductNamePrice>
-              <p>Antioxidant Aid for Heart Health</p>
-            </div>
-            <CartButtonsDiv>
-              <CartProductButtonsDiv>
-                <CartProductPlusMinusButton onClick={addQuantity}>
-                  +
-                </CartProductPlusMinusButton>
-                <p>1</p>
-                <CartProductPlusMinusButton onClick={minusQuantity}>
-                  -
-                </CartProductPlusMinusButton>
-              </CartProductButtonsDiv>
-              <CartProductRemove>Remove</CartProductRemove>
-            </CartButtonsDiv>
-          </CartProductInfDiv>
-        </CartProductLi>
-      ))}
-    </CartProductUl>
+    <>
+      {isToken && cartArray.length !== 0 ? (
+        <CartProductUl>
+          {cartArray.map(item => (
+            <CartProductLi>
+              <CartProductImgDiv>
+                <img
+                  src={item.photo}
+                  alt={item.name}
+                  width="100%"
+                  height="100%"
+                ></img>
+              </CartProductImgDiv>
+              <CartProductInfDiv>
+                <div>
+                  <CartProductNamePrice>
+                    <p>{item.name}</p>
+                    <p>৳ {item.price}</p>
+                  </CartProductNamePrice>
+                  <p>For {item.category} Health</p>
+                </div>
+                <CartButtonsDiv>
+                  <CartProductButtonsDiv>
+                    <CartProductPlusMinusButton
+                      onClick={() => addQuantity(item._id)}
+                    >
+                      +
+                    </CartProductPlusMinusButton>
+                    <p>{quantities[item._id]}</p>
+                    <CartProductPlusMinusButton
+                      onClick={() => minusQuantity(item._id)}
+                    >
+                      -
+                    </CartProductPlusMinusButton>
+                  </CartProductButtonsDiv>
+                  <CartProductRemove onClick={() => toRemoveProduct(item._id)}>
+                    Remove
+                  </CartProductRemove>
+                </CartButtonsDiv>
+              </CartProductInfDiv>
+            </CartProductLi>
+          ))}
+        </CartProductUl>
+      ) : (
+        <div>00000000000000000000</div>
+      )}
+    </>
   );
 };
 export default CartProducts;

@@ -128,6 +128,19 @@ export const updateCart = createAsyncThunk(
     }
   }
 );
+export const removeCartToId = createAsyncThunk(
+  'removeCart',
+  async (id, thunkAPI) => {
+    try {
+      console.log(id);
+      const respons = await axios.delete(`/api/cart/delete/${id}`);
+      console.log(respons.data);
+      return respons.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 export const getProductToId = createAsyncThunk(
   'getProductToId',

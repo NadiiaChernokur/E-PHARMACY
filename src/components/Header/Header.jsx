@@ -33,14 +33,16 @@ const Header = () => {
   // const navigate = useNavigate();
   const isHomePage = location.pathname === '/home' || location.pathname === '/';
   const user = useSelector(state => state.user);
+  const cart = useSelector(state => state.cart);
   console.log(user);
+  console.log(cart.length);
 
   const getFirstLetter = name => {
     return name.charAt(0).toUpperCase();
   };
 
   useEffect(() => {
-    setCartNumber(user.cart.length);
+    setCartNumber(cart.length);
 
     const fetchUser = async () => {
       const storedUserData = localStorage.getItem('e-pharmacy');
@@ -58,7 +60,7 @@ const Header = () => {
       }
     };
     fetchUser();
-  }, [dispatch, user.cart.length]);
+  }, [cart.length, dispatch]);
 
   const toLogOut = async () => {
     const res = await dispatch(logOut());

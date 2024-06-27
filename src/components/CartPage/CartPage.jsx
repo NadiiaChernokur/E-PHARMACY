@@ -36,35 +36,35 @@ const validationSchema = yup.object({
 });
 
 const CartPage = () => {
-  const [isToken, setIsToken] = useState(false);
-  const [cartArray, setCartArray] = useState([]);
-  const dispatch = useDispatch();
+  // const [isToken, setIsToken] = useState(false);
+  // const [cartArray, setCartArray] = useState([]);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const storedUserData = localStorage.getItem('e-pharmacy');
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const storedUserData = localStorage.getItem('e-pharmacy');
 
-      if (storedUserData && storedUserData !== '[]') {
-        const isToken = JSON.parse(storedUserData);
-        safeToken(isToken.token);
-        const res = await dispatch(getUser());
-        console.log(res);
-        if (res.payload._id) {
-          setIsToken(true);
-          if (res.payload.cart.length > 0) {
-            console.log(res.payload.cart);
-            const idArray = res.payload.cart.map(item => item.productId);
-            console.log(idArray);
-            const results = await dispatch(getProductToId(idArray));
-            console.log(results);
+  //     if (storedUserData && storedUserData !== '[]') {
+  //       const isToken = JSON.parse(storedUserData);
+  //       safeToken(isToken.token);
+  //       const res = await dispatch(getUser());
+  //       console.log(res);
+  //       if (res.payload._id) {
+  //         setIsToken(true);
+  //         if (res.payload.cart.length > 0) {
+  //           console.log(res.payload.cart);
+  //           const idArray = res.payload.cart.map(item => item.productId);
+  //           console.log(idArray);
+  //           const results = await dispatch(getProductToId(idArray));
+  //           console.log(results);
 
-            setCartArray(results.payload);
-          }
-        }
-      }
-    };
-    fetchUser();
-  }, [dispatch]);
+  //           setCartArray(results.payload);
+  //         }
+  //       }
+  //     }
+  //   };
+  //   fetchUser();
+  // }, [dispatch]);
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -196,11 +196,11 @@ const CartPage = () => {
             <CartFormButton type="submit">Place order</CartFormButton>
           </CartForm>
         </CartFormDiv>
-        {isToken && cartArray.length !== 0 ? (
-          <CartProducts array={cartArray} />
-        ) : (
+        {/* {isToken && cartArray.length !== 0 ? ( */}
+        <CartProducts />
+        {/* ) : (
           <div>Nichogo nemar</div>
-        )}
+        )} */}
       </CartMain>
     </CartContainer>
   );

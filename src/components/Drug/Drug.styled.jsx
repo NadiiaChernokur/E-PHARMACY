@@ -86,7 +86,7 @@ export const PlusMinusButton = styled.button`
 export const InformDiv = styled.div`
   border-radius: 27px;
   width: 800px;
-  height: 709px;
+  /* height: 709px; */
   background: #fff;
   padding: 40px;
 `;
@@ -101,7 +101,8 @@ export const InformButton = styled.button`
   padding: 8px 25px;
   width: 120px;
   height: 33px;
-  background: #59b17a;
+  background: ${({ $prop }) =>
+    $prop ? ' #59b17a' : 'rgba(89, 177, 122, 0.1)'};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,5 +110,5 @@ export const InformButton = styled.button`
   font-size: 14px;
   letter-spacing: -0.05em;
   text-align: center;
-  color: #fff;
+  color: ${({ $prop }) => ($prop ? ' #fff' : '#59b17a')};
 `;

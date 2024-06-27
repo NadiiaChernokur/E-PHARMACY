@@ -4,7 +4,8 @@ import {
   DescriptionText,
 } from './Description.styled';
 
-const Description = () => {
+const Description = ({ prod }) => {
+  console.log(prod);
   return (
     <DescriptionContainer>
       <p>
@@ -19,32 +20,27 @@ const Description = () => {
         <DescriptionSpan>
           Medicinal Uses: Antioxidant Properties:
         </DescriptionSpan>
-        Moringa is packed with antioxidants that help fight oxidative stress and
-        inflammation in the body.
+        {prod.uses}
       </DescriptionText>
       <DescriptionText>
         <DescriptionSpan>Anti-Diabetic Effects:</DescriptionSpan>
-        Some studies have shown that moringa leaves might lower blood sugar
-        levels, making it a valuable supplement for managing diabetes.
+        {prod.effects}
       </DescriptionText>
       <DescriptionText>
         <DescriptionSpan>Heart Health:</DescriptionSpan>
-        The plant has been linked to reduced cholesterol levels, which is vital
-        for heart health.
+        {prod.health}
       </DescriptionText>
       <DescriptionText>
         <DescriptionSpan>Anti-Cancer Properties:</DescriptionSpan>
-        Certain compounds in moringa, such as niazimicin, have been found to
-        suppress the growth of cancer cells in laboratory studies.
+        {prod.properties}
       </DescriptionText>
       <DescriptionText>
         <DescriptionSpan>Immune Support:</DescriptionSpan>
-        With its high vitamin C content, moringa can boost the immune system.
+        {prod.support}
       </DescriptionText>
       <DescriptionText>
         <DescriptionSpan>Digestive Aid:</DescriptionSpan>
-        Moringa can help in treating digestive disorders due to its
-        anti-inflammatory properties.
+        {prod.aid}
       </DescriptionText>
     </DescriptionContainer>
   );

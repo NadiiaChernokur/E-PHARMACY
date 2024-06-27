@@ -72,6 +72,9 @@ const CartPage = () => {
       console.log(values);
     },
   });
+  const formatPrice = price => {
+    return price.toFixed(2);
+  };
 
   return (
     <CartContainer>
@@ -185,7 +188,7 @@ const CartPage = () => {
             </p>
             <CartPriceDiv>
               <p>Total:</p>
-              <p>৳ {totalPrice}</p>
+              <p>৳ {formatPrice(totalPrice)}</p>
             </CartPriceDiv>
             <CartFormButton type="submit">Place order</CartFormButton>
           </CartForm>

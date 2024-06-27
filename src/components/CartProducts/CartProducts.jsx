@@ -33,22 +33,24 @@ const CartProducts = ({ priceChange }) => {
         const isToken = JSON.parse(storedUserData);
         safeToken(isToken.token);
         const res = await dispatch(getUser());
-        console.log(res);
+
         if (res.payload._id) {
           setIsToken(true);
           if (res.payload.cart.length > 0) {
-            console.log(res.payload.cart);
             const idArray = res.payload.cart.map(item => item.productId);
-            console.log(idArray);
             const results = await dispatch(getProductToId(idArray));
-            console.log(results);
-
             setCartArray(results.payload);
             const initialQuantities = res.payload.cart.reduce((acc, item) => {
               acc[item.productId] = item.quantity;
               return acc;
             }, {});
+
             setQuantities(initialQuantities);
+            const initialTotalPrice = results.payload.reduce((total, item) => {
+              const quantity = initialQuantities[item._id] || 0;
+              return total + item.price * quantity;
+            }, 0);
+            priceChange(initialTotalPrice);
           }
         }
       }

@@ -10,7 +10,7 @@ export const CartReviewsLi = styled.li`
   border-radius: 20px;
   padding: 14px 28px;
   width: 720px;
-  height: 162px;
+  /* height: 162px; */
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
@@ -34,6 +34,7 @@ export const CartReviewsImg = styled.img`
   width: 44px;
   height: 44px;
   background: pink;
+  object-fit: cover;
 `;
 export const CartReviewsTime = styled.p`
   font-weight: 400;

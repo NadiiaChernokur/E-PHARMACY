@@ -66,15 +66,17 @@ const Drug = () => {
     if (isToken) {
       const res = await dispatch(updateCart({ quantity, productId: id }));
       console.log(res);
-      toast('The product has been added to the cart');
+      if (res.type === 'updateToCart/fulfilled') {
+        navigate('/cart');
+      }
     } else {
-      console.log('notavtoreis');
+      toast('Something went wrong, please try again');
     }
   };
 
   return (
     <DrugContainer>
-      <ToastContainer toastStyle={{ background: '#07960a', color: 'white' }} />
+      <ToastContainer toastStyle={{ background: '#fb430b', color: 'white' }} />
       <DrugCart>
         <DrugImgDiv>
           <img
@@ -104,14 +106,24 @@ const Drug = () => {
       </DrugCart>
       <InformDiv>
         <InformButtonsDiv>
-          <InformButton onClick={() => setActive('description')}>
+          <InformButton
+            onClick={() => setActive('description')}
+            $prop={activ === 'description'}
+          >
             Description
           </InformButton>
-          <InformButton onClick={() => setActive('reviews')}>
+          <InformButton
+            onClick={() => setActive('reviews')}
+            $prop={activ === 'reviews'}
+          >
             Reviews
           </InformButton>
         </InformButtonsDiv>
-        {activ === 'description' ? <Description /> : <CartReviews />}
+        {activ === 'description' ? (
+          <Description prod={item} />
+        ) : (
+          <CartReviews />
+        )}
       </InformDiv>
     </DrugContainer>
   );

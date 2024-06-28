@@ -76,14 +76,20 @@ export const MedicineAddButton = styled.button`
   border-radius: 24px;
   border: none;
   padding: 10px 16px;
-  /* width: 108px;
-  height: 34px; */
+
   background: #59b17a;
   font-weight: 500;
   font-size: 14px;
   line-height: 100%;
   text-align: center;
   color: #fff;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;
 export const MedicineDetailsButton = styled.button`
   font-weight: 400;
@@ -95,6 +101,13 @@ export const MedicineDetailsButton = styled.button`
   background: none;
   border: none;
   padding: 0;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;
 export const FilterButton = styled.button`
   border-radius: 60px;
@@ -110,6 +123,13 @@ export const FilterButton = styled.button`
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;
 export const FilterForm = styled(Form)`
   display: flex;

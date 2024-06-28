@@ -63,6 +63,13 @@ export const VisiteButton = styled.button`
   line-height: 100%;
   text-align: center;
   color: #fff;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const StarDiv = styled.div`

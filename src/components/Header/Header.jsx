@@ -35,21 +35,22 @@ const Header = () => {
   const user = useSelector(state => state.user);
   const cart = useSelector(state => state.cart);
   console.log(user);
-  console.log(cart.length);
+  console.log(cart);
 
   const getFirstLetter = name => {
     return name.charAt(0).toUpperCase();
   };
 
   useEffect(() => {
-    setCartNumber(cart.length);
+    setCartNumber(cart);
 
     const fetchUser = async () => {
       const storedUserData = localStorage.getItem('e-pharmacy');
 
       if (storedUserData && storedUserData !== '[]') {
         const isToken = JSON.parse(storedUserData);
-        safeToken(isToken.token);
+        console.log(isToken.token);
+        await safeToken(isToken.token);
         const res = await dispatch(getUser());
         console.log(res);
         if (res.payload._id) {
@@ -59,12 +60,25 @@ const Header = () => {
         }
       }
     };
+    if (user.token) {
+      setIsToken(true);
+    }
     fetchUser();
-  }, [cart.length, dispatch]);
+  }, [cart, dispatch, user.token]);
 
   const toLogOut = async () => {
-    const res = await dispatch(logOut());
-    console.log(res);
+    try {
+      const res = await dispatch(logOut());
+      console.log(res);
+
+      localStorage.removeItem('e-pharmacy');
+
+      setIsToken(false);
+      setUserName('');
+      setCartNumber(0);
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
   };
 
   return (
@@ -137,7 +151,8 @@ const Header = () => {
           </NavLink>
           <NavLink>
             <HeaderNameDiv $isHomePage={isHomePage}>
-              {getFirstLetter(user?.name) || getFirstLetter(userName)}
+              {(user.length > 0 && getFirstLetter(user?.user.name)) ||
+                getFirstLetter(userName)}
             </HeaderNameDiv>
           </NavLink>
           <NavLink>

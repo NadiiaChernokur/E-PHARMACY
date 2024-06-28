@@ -47,7 +47,7 @@ const validationSchema = yup.object({
 const CartPage = () => {
   const [productArray, setProductArray] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-
+  console.log(productArray);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -72,13 +72,23 @@ const CartPage = () => {
     console.log('ttt', val);
     setProductArray(val);
   };
-  const toFetchForm = async val => {
-    const data = { ...val, totalPrice, productArray };
-    console.log(data);
-    const res = await dispatch(toOrder());
-    console.log(res);
-    await dispatch(clearCart());
-    setTotalPrice(0);
+  const toFetchForm = async (val, resetForm) => {
+    const data = {
+      ...val,
+      totalAmount: totalPrice,
+      products: [...productArray],
+    };
+
+    try {
+      const res = await dispatch(toOrder(data));
+      console.log(res);
+      await dispatch(clearCart());
+      setTotalPrice(0);
+      resetForm();
+      alert('Order placed successfully and cart cleared');
+    } catch (error) {
+      console.error('Error placing order:', error);
+    }
   };
 
   const formik = useFormik({
@@ -90,9 +100,8 @@ const CartPage = () => {
       paymentMethod: '',
     },
     validationSchema: validationSchema,
-    onSubmit: values => {
-      console.log(values);
-      toFetchForm(values);
+    onSubmit: (values, { resetForm }) => {
+      toFetchForm(values, resetForm);
     },
   });
   const formatPrice = price => {

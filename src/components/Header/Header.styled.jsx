@@ -14,6 +14,13 @@ export const LogoDiv = styled.div`
   gap: 14px;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;
 export const LogoText = styled.p`
   font-weight: 600;
@@ -30,6 +37,13 @@ export const NavParagraf = styled.div`
   background: white;
   border-radius: 60px;
   border: 1px solid rgba(29, 30, 33, 0.1);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;
 export const NavParagrafInner = styled.p`
   padding: 8px 20px;
@@ -72,6 +86,13 @@ export const RegButton = styled.button`
   font-size: 14px;
   line-height: 100%;
   color: #f1f1f1;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;
 export const LoginButton = styled.button`
   background: none;
@@ -83,6 +104,13 @@ export const LoginButton = styled.button`
   line-height: 100%;
   color: ${({ $isHomePage }) => ($isHomePage ? ' #fff' : '#59b17a')};
   text-decoration: underline;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;
 export const LogoutButton = styled.button`
   border: 1px solid rgba(89, 177, 122, 0.5);
@@ -104,6 +132,13 @@ export const HeaderCartDiv = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;
 export const HeaderRegDiv = styled.div`
   display: flex;

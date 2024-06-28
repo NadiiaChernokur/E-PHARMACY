@@ -2,6 +2,7 @@ import {
   BottomFooterDiv,
   FooterContainer,
   FooterLogoDiv,
+  FooterNavP,
   FooterText,
   InnerFooterContainer,
   Media,
@@ -35,27 +36,39 @@ const Footer = () => {
           </div>
           <Nav>
             <NavLink to="/home">
-              <p>Home</p>
+              <FooterNavP>Home</FooterNavP>
             </NavLink>
             <NavLink to="/medicine-store">
-              <p>Medicine store</p>
+              <FooterNavP>Medicine store</FooterNavP>
             </NavLink>
             <NavLink to="/medicine">
-              <p>Medicine</p>
+              <FooterNavP>Medicine</FooterNavP>
             </NavLink>
           </Nav>
           <MediaDiv>
-            <Media>
+            <Media
+              href="https://www.facebook.com/goITclub/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <svg width="28" height="28">
                 <use href={`${sprite}#facebook`}></use>
               </svg>
             </Media>
-            <Media>
+            <Media
+              href="https://www.instagram.com/goitclub/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <svg width="28" height="28">
                 <use href={`${sprite}#instagram`}></use>
               </svg>
             </Media>
-            <Media>
+            <Media
+              href="https://www.youtube.com/c/GoIT"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <svg width="28" height="28">
                 <use href={`${sprite}#youtube`}></use>
               </svg>

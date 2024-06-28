@@ -38,6 +38,13 @@ export const AddMedicinesButton = styled.button`
   font-size: 14px;
   line-height: 129%;
   color: #f1f1f1;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;
 export const AddMedicinesImgDiv = styled.div`
   width: 608px;

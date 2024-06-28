@@ -42,15 +42,21 @@ export const MediaDiv = styled.div`
   display: flex;
   gap: 12px;
 `;
-export const Media = styled.div`
+export const Media = styled.a`
   border: 1px solid rgba(247, 248, 250, 0.1);
   border-radius: 10px;
-
   width: 44px;
   height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;
 export const BottomFooterDiv = styled.div`
   display: flex;
@@ -65,4 +71,14 @@ export const Span = styled.span`
   height: 20px;
   background: #f7f8fa;
   opacity: 0.2;
+`;
+
+export const FooterNavP = styled.p`
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;

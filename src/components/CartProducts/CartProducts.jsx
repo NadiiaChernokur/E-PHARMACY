@@ -46,7 +46,15 @@ const CartProducts = ({ priceChange, arr }) => {
             }, {});
 
             setQuantities(initialQuantities);
-            arr(initialQuantities);
+            const productsArray = Object.keys(initialQuantities).map(
+              productId => ({
+                productId,
+                quantity: initialQuantities[productId],
+              })
+            );
+
+            arr(productsArray);
+
             const initialTotalPrice = results.payload.reduce((total, item) => {
               const quantity = initialQuantities[item._id] || 0;
               return total + item.price * quantity;
@@ -78,7 +86,11 @@ const CartProducts = ({ priceChange, arr }) => {
       };
 
       updateTotalPrice(newQuantities);
-      arr(newQuantities);
+      const productsArray = Object.keys(newQuantities).map(productId => ({
+        productId,
+        quantity: newQuantities[productId],
+      }));
+      arr(productsArray);
       return newQuantities;
     });
   };
@@ -90,7 +102,11 @@ const CartProducts = ({ priceChange, arr }) => {
         [id]: prevQuantities[id] > 1 ? prevQuantities[id] - 1 : 1,
       };
       updateTotalPrice(newQuantities);
-      arr(newQuantities);
+      const productsArray = Object.keys(newQuantities).map(productId => ({
+        productId,
+        quantity: newQuantities[productId],
+      }));
+      arr(productsArray);
       return newQuantities;
     });
   };
@@ -106,7 +122,11 @@ const CartProducts = ({ priceChange, arr }) => {
         const newQuantities = { ...prevQuantities };
         delete newQuantities[id];
         updateTotalPrice(newQuantities);
-        arr(newQuantities);
+        const productsArray = Object.keys(newQuantities).map(productId => ({
+          productId,
+          quantity: newQuantities[productId],
+        }));
+        arr(productsArray);
         return newQuantities;
       });
     }

@@ -8,6 +8,7 @@ import {
   getStore,
   getUser,
   logIn,
+  logOut,
   registration,
   removeCartToId,
   toOrder,
@@ -44,10 +45,12 @@ const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
 };
-// const getNoticesCategoriesFulfilled = state => {
-//   state.isLoadingCategory = false;
-//   state.error = null;
-// };
+const logoutFulfilled = state => {
+  state.isLoadingCategory = false;
+  state.error = null;
+  state.cart = [];
+  state.user = [];
+};
 
 const getCategoriesFulfilled = (state, action) => {
   state.isLoading = false;
@@ -88,7 +91,9 @@ const getStoreFulfilled = (state, action) => {
 const loginFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
+  console.log(action.payload);
   state.user = action.payload;
+  state.cart = action.payload.user.cart.length;
 };
 const registrationFulfilled = (state, action) => {
   state.isLoading = false;
@@ -162,10 +167,10 @@ const farmaSlice = createSlice({
       .addCase(toOrder.rejected, handleRejected)
       .addCase(clearCart.pending, handlePending)
       .addCase(clearCart.fulfilled, clearCartFulfilled)
-      .addCase(clearCart.rejected, handleRejected),
-  //   .addCase(registration.pending, handlePending)
-  //   .addCase(registration.fulfilled, registrFulfilled)
-  //   .addCase(registration.rejected, handleRejected)
+      .addCase(clearCart.rejected, handleRejected)
+      .addCase(logOut.pending, handlePending)
+      .addCase(logOut.fulfilled, logoutFulfilled)
+      .addCase(logOut.rejected, handleRejected),
   //   .addCase(getCurrentUser.pending, handlePending)
   //   .addCase(getCurrentUser.fulfilled, getCurrentUserFulfilled)
   //   .addCase(getCurrentUser.rejected, handleRejected)

@@ -40,7 +40,7 @@ export const registration = createAsyncThunk(
 );
 export const logOut = createAsyncThunk('logOut', async (data, thunkAPI) => {
   try {
-    const respons = await axios.post(`/api/user/logout`);
+    const respons = await axios.get(`/api/user/logout`);
     clearToken();
 
     return respons.data;
@@ -158,6 +158,7 @@ export const getProductToId = createAsyncThunk(
 
 export const getUser = createAsyncThunk('getUser', async (data, thunkAPI) => {
   try {
+    console.log(safeToken);
     const respons = await axios.get(`/api/user/user-info`);
     console.log(respons);
     return respons.data;

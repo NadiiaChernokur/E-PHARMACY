@@ -9,6 +9,13 @@ export const AddMedicinesContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 60px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 704px;
+    height: 911px;
+    padding: 40px 48px;
+    flex-direction: column;
+    gap: 83px;
+  }
 `;
 
 export const AddMedicinesLeft = styled.div`

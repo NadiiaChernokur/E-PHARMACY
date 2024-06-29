@@ -1,5 +1,6 @@
 import {
   BottomFooterDiv,
+  Div,
   FooterContainer,
   FooterLogoDiv,
   FooterNavP,
@@ -34,46 +35,48 @@ const Footer = () => {
               life, and enjoy every moment.
             </FooterText>
           </div>
-          <Nav>
-            <NavLink to="/home">
-              <FooterNavP>Home</FooterNavP>
-            </NavLink>
-            <NavLink to="/medicine-store">
-              <FooterNavP>Medicine store</FooterNavP>
-            </NavLink>
-            <NavLink to="/medicine">
-              <FooterNavP>Medicine</FooterNavP>
-            </NavLink>
-          </Nav>
-          <MediaDiv>
-            <Media
-              href="https://www.facebook.com/goITclub/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg width="28" height="28">
-                <use href={`${sprite}#facebook`}></use>
-              </svg>
-            </Media>
-            <Media
-              href="https://www.instagram.com/goitclub/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg width="28" height="28">
-                <use href={`${sprite}#instagram`}></use>
-              </svg>
-            </Media>
-            <Media
-              href="https://www.youtube.com/c/GoIT"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg width="28" height="28">
-                <use href={`${sprite}#youtube`}></use>
-              </svg>
-            </Media>
-          </MediaDiv>
+          <Div>
+            <Nav>
+              <NavLink to="/home">
+                <FooterNavP>Home</FooterNavP>
+              </NavLink>
+              <NavLink to="/medicine-store">
+                <FooterNavP>Medicine store</FooterNavP>
+              </NavLink>
+              <NavLink to="/medicine">
+                <FooterNavP>Medicine</FooterNavP>
+              </NavLink>
+            </Nav>
+            <MediaDiv>
+              <Media
+                href="https://www.facebook.com/goITclub/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg width="28" height="28">
+                  <use href={`${sprite}#facebook`}></use>
+                </svg>
+              </Media>
+              <Media
+                href="https://www.instagram.com/goitclub/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg width="28" height="28">
+                  <use href={`${sprite}#instagram`}></use>
+                </svg>
+              </Media>
+              <Media
+                href="https://www.youtube.com/c/GoIT"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg width="28" height="28">
+                  <use href={`${sprite}#youtube`}></use>
+                </svg>
+              </Media>
+            </MediaDiv>
+          </Div>
         </TopFooterDiv>
         <BottomFooterDiv>
           <p>© E-Pharmacy 2023. All Rights Reserved</p>

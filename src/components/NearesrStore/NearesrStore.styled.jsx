@@ -6,6 +6,11 @@ export const NearestStoreUl = styled.ul`
   width: 1248px;
   margin: auto;
   margin-bottom: 120px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 704px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
 `;
 export const NearestStoreLi = styled.li`
   border: 1.15px solid #f1f1f1;
@@ -15,6 +20,9 @@ export const NearestStoreLi = styled.li`
   height: 232px;
   background: #e7f1ed;
   box-sizing: border-box;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 344px;
+  }
 `;
 export const NearestStoreName = styled.div`
   display: flex;

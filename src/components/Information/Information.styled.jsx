@@ -5,6 +5,10 @@ export const InformationUl = styled.ul`
   width: 1019px;
   margin: auto;
   margin-bottom: 120px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 670px;
+    flex-wrap: wrap;
+  }
 `;
 export const InformationLi = styled.li`
   border: 1.15px solid #f1f1f1;

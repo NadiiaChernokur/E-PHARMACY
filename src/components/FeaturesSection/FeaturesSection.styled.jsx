@@ -8,6 +8,11 @@ export const FeaturesSectionUl = styled.ul`
   letter-spacing: -0.02em;
   color: #1d1e21;
   margin-bottom: 120px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 704px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
 export const FeaturesDiv = styled.div`
   display: flex;

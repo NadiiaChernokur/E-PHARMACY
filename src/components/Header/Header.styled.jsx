@@ -8,6 +8,9 @@ export const HeaderContainer = styled.div`
   margin: auto;
   position: relative;
   z-index: 5;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 768px;
+  }
 `;
 export const LogoDiv = styled.div`
   display: flex;
@@ -31,6 +34,9 @@ export const LogoText = styled.p`
 export const NavDiv = styled.nav`
   display: flex;
   align-items: center;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    display: none;
+  }
 `;
 export const NavParagraf = styled.div`
   padding: 8px;
@@ -76,6 +82,9 @@ export const InnerDiv = styled.div`
 export const RegDiv = styled.div`
   display: flex;
   gap: 4px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    display: none;
+  }
 `;
 export const RegButton = styled.button`
   background: #59b17a;

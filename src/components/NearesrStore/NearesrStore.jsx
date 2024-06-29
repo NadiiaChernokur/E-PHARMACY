@@ -16,10 +16,14 @@ import sprite from '../../img/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getNearestStore } from '../../redux/operation';
+import { useMediaQuery } from 'react-responsive';
 
 const NearesrStore = () => {
   const dispatch = useDispatch();
   const [store, setStore] = useState([]);
+  const isTablet = useMediaQuery({
+    query: '(min-width: 768px) and (max-width: 1280px)',
+  });
   useEffect(() => {
     const fetchStore = async () => {
       const res = await dispatch(getNearestStore());
@@ -28,9 +32,10 @@ const NearesrStore = () => {
     };
     fetchStore();
   }, [dispatch]);
+  const displayedStore = isTablet ? store.slice(0, 6) : store;
   return (
     <NearestStoreUl>
-      {store?.map(item => (
+      {displayedStore?.map(item => (
         <NearestStoreLi key={item._id}>
           <NearestStoreName>
             <Name>{item.name}</Name>

@@ -4,13 +4,18 @@ export const FooterContainer = styled.footer`
   width: 100%;
   height: 328px;
   padding: 40px 0;
-  /* position: fixed; */
-  /* bottom: 0; */
   color: #f7f8fa;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    padding: 0px;
+  }
 `;
 export const InnerFooterContainer = styled.div`
   margin: auto;
   width: 1202px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 768px;
+    padding: 32px;
+  }
 `;
 export const TopFooterDiv = styled.div`
   display: flex;
@@ -80,5 +85,14 @@ export const FooterNavP = styled.p`
   &:focus,
   &:active {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+`;
+export const Div = styled.div`
+  display: none;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 32px;
   }
 `;

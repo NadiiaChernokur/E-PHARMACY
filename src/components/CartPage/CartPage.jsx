@@ -17,14 +17,8 @@ import {
 } from './CartPage.styled';
 import CartProducts from 'components/CartProducts/CartProducts';
 import { useEffect, useState } from 'react';
-import {
-  clearCart,
-  getProductToId,
-  getUser,
-  safeToken,
-  toOrder,
-} from '../../redux/operation';
-import { useDispatch } from 'react-redux';
+import { clearCart, safeToken, toOrder } from '../../redux/operation';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const validationSchema = yup.object({
@@ -47,7 +41,11 @@ const validationSchema = yup.object({
 const CartPage = () => {
   const [productArray, setProductArray] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  console.log(productArray);
+  // const [isUser, setIsUser] = useState(false);
+
+  const user = useSelector(state => state.user);
+  // console.log(isUser);
+  console.log(user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -58,18 +56,19 @@ const CartPage = () => {
       if (storedUserData && storedUserData !== '[]') {
         const isToken = JSON.parse(storedUserData);
         safeToken(isToken.token);
+
+        console.log('888888888');
       } else {
         navigate('/home');
       }
     };
     fetchUser();
-  }, [navigate]);
+  }, [navigate, user]);
 
   const toNewPrice = val => {
     setTotalPrice(val);
   };
   const addProdactArray = val => {
-    console.log('ttt', val);
     setProductArray(val);
   };
   const toFetchForm = async (val, resetForm) => {
@@ -222,7 +221,9 @@ const CartPage = () => {
               <p>Total:</p>
               <p>৳ {formatPrice(totalPrice)}</p>
             </CartPriceDiv>
-            <CartFormButton type="submit">Place order</CartFormButton>
+            <CartFormButton type="submit" disabled={totalPrice === 0}>
+              Place order
+            </CartFormButton>
           </CartForm>
         </CartFormDiv>
 

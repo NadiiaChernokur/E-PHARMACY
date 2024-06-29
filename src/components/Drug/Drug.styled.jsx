@@ -63,6 +63,13 @@ export const DrugAddButton = styled.button`
   font-size: 14px;
   line-height: 129%;
   color: #fff;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;
 export const PlusMinusDiv = styled.div`
   border-radius: 60px;
@@ -81,6 +88,13 @@ export const PlusMinusButton = styled.button`
   border: none;
   font-size: 20px;
   font-weight: 500;
+  cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: #28fc2f;
+  }
 `;
 
 export const InformDiv = styled.div`
@@ -111,4 +125,11 @@ export const InformButton = styled.button`
   letter-spacing: -0.05em;
   text-align: center;
   color: ${({ $prop }) => ($prop ? ' #fff' : '#59b17a')};
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;

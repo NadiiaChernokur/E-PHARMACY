@@ -70,7 +70,7 @@ const Drug = () => {
         navigate('/cart');
       }
     } else {
-      toast('Something went wrong, please try again');
+      toast('You are not authorized. Log in');
     }
   };
 

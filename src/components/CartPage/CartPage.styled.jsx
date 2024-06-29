@@ -72,11 +72,19 @@ export const CartFormButton = styled.button`
   padding: 13px 32px;
   width: 141px;
   height: 44px;
-  background: #59b17a;
+  background: ${props => (props.disabled ? 'rgb(136, 178, 152)' : '#59b17a')};
   font-weight: 500;
   font-size: 14px;
   line-height: 129%;
   color: #fff;
+  cursor: ${props => (props.disabled ? 'none' : 'pointer')};
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: ${props =>
+      props.disabled ? 'none' : ' 0 4px 8px rgba(0, 0, 0, 0.2);'};
+  }
 `;
 export const CartForHr = styled.hr`
   width: 530px;

@@ -105,9 +105,13 @@ const Medicine = () => {
     if (isToken) {
       const res = await dispatch(updateCart({ quantity: 1, productId: id }));
       console.log(res);
-      toast('The product has been added to the cart');
+      toast('The product has been added to the cart', {
+        style: { background: '#25f41e', color: 'white' },
+      });
     } else {
-      console.log('notavtoreis');
+      toast('You are not authorized. Log in', {
+        style: { background: '#f41e1e', color: 'white' },
+      });
     }
   };
 
@@ -130,7 +134,8 @@ const Medicine = () => {
 
   return (
     <MedicineContainer>
-      <ToastContainer toastStyle={{ background: '#07960a', color: 'white' }} />
+      {/* <ToastContainer toastStyle={{ background: '#07960a', color: 'white' }} /> */}
+      <ToastContainer />
       <MedicineH2>Medicine</MedicineH2>
       <Formik
         initialValues={{ keyword: '', category: '' }}

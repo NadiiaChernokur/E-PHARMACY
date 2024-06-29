@@ -26,11 +26,12 @@ import { useEffect, useState } from 'react';
 
 const Header = () => {
   const [isToken, setIsToken] = useState(false);
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState('U');
   const [cartNamber, setCartNumber] = useState(0);
   const location = useLocation();
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
   const isHomePage = location.pathname === '/home' || location.pathname === '/';
   const user = useSelector(state => state.user);
   const cart = useSelector(state => state.cart);
@@ -42,8 +43,14 @@ const Header = () => {
   };
 
   useEffect(() => {
-    setCartNumber(cart);
+    setCartNumber(cart || '0');
+    setUserName(user?.name || 'U');
+  }, [cart, user]);
 
+  useEffect(() => {
+    // setCartNumber(cart);
+    // setUserName(user?.name);
+    console.log(user);
     const fetchUser = async () => {
       const storedUserData = localStorage.getItem('e-pharmacy');
 
@@ -60,19 +67,24 @@ const Header = () => {
         }
       }
     };
-    if (user.token) {
+    // if (user.token) {
+    //   setIsToken(true);
+    // }
+    if (!user.token) {
+      fetchUser();
+    } else {
       setIsToken(true);
     }
-    fetchUser();
-  }, [cart, dispatch, user.token]);
+  }, [cart, dispatch, user]);
 
   const toLogOut = async () => {
     try {
-      const res = await dispatch(logOut());
-      console.log(res);
+      await dispatch(logOut());
 
       localStorage.removeItem('e-pharmacy');
-
+      if (location.pathname === '/cart') {
+        navigate('/home');
+      }
       setIsToken(false);
       setUserName('');
       setCartNumber(0);
@@ -80,7 +92,7 @@ const Header = () => {
       console.error('Error logging out:', error);
     }
   };
-
+  console.log(userName);
   return (
     <HeaderContainer>
       <NavLink to="/home">
@@ -137,7 +149,9 @@ const Header = () => {
           <NavLink to="/register">
             <RegButton>Register</RegButton>
           </NavLink>
-          <LoginButton $isHomePage={isHomePage}>Login</LoginButton>
+          <NavLink to="/login">
+            <LoginButton $isHomePage={isHomePage}>Login</LoginButton>
+          </NavLink>
         </RegDiv>
       ) : (
         <HeaderRegDiv>
@@ -151,8 +165,7 @@ const Header = () => {
           </NavLink>
           <NavLink>
             <HeaderNameDiv $isHomePage={isHomePage}>
-              {(user.length > 0 && getFirstLetter(user?.user.name)) ||
-                getFirstLetter(userName)}
+              {getFirstLetter(userName)}
             </HeaderNameDiv>
           </NavLink>
           <NavLink>

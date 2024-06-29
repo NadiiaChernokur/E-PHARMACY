@@ -48,7 +48,7 @@ const handleRejected = (state, action) => {
 const logoutFulfilled = state => {
   state.isLoadingCategory = false;
   state.error = null;
-  state.cart = [];
+  state.cart = 0;
   state.user = [];
 };
 
@@ -103,18 +103,20 @@ const registrationFulfilled = (state, action) => {
 const userFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
+  console.log(action.payload);
   state.user = action.payload;
 };
 const updateCartFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.cart = action.payload;
+  console.log(action.payload);
+  state.cart = action.payload.length;
 };
 
 const removeCartFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.cart = action.payload;
+  state.cart = action.payload.length;
 };
 // const addToFavoriteFulfilled = (state, action) => {
 //   state.isLoading = false;

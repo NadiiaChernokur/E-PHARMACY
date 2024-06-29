@@ -84,10 +84,24 @@ export const RegisterButton = styled.button`
   font-size: 14px;
   line-height: 129%;
   color: #fff;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;
 export const LogInSpan = styled.span`
   color: #59b17a;
   text-decoration: underline;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 `;
 export const Error = styled(ErrorMessage)`
   color: red;

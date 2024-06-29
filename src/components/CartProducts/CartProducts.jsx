@@ -67,6 +67,7 @@ const CartProducts = ({ priceChange, arr }) => {
     if (isToken) {
       return;
     }
+
     fetchUser();
   }, [arr, dispatch, isToken, priceChange]);
 
@@ -113,19 +114,22 @@ const CartProducts = ({ priceChange, arr }) => {
 
   const toRemoveProduct = async id => {
     const res = await dispatch(removeCartToId(id));
-
+    console.log(cartArray);
     if (res.type === 'removeCart/fulfilled') {
       setCartArray(prevCartArray =>
         prevCartArray.filter(item => item._id !== id)
       );
+
       setQuantities(prevQuantities => {
         const newQuantities = { ...prevQuantities };
         delete newQuantities[id];
         updateTotalPrice(newQuantities);
+
         const productsArray = Object.keys(newQuantities).map(productId => ({
           productId,
           quantity: newQuantities[productId],
         }));
+
         arr(productsArray);
         return newQuantities;
       });
@@ -134,12 +138,13 @@ const CartProducts = ({ priceChange, arr }) => {
   const formatPrice = price => {
     return price.toFixed(2);
   };
+
   return (
     <>
       {isToken && cartArray.length !== 0 ? (
         <CartProductUl>
           {cartArray.map(item => (
-            <CartProductLi>
+            <CartProductLi key={item._id}>
               <CartProductImgDiv>
                 <img
                   src={item.photo}

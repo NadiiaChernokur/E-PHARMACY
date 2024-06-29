@@ -18,10 +18,14 @@ import sprite from '../../img/sprite.svg';
 import { useEffect, useState } from 'react';
 import { getStore } from '../../redux/operation';
 import { useDispatch } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 
 const MedicineStore = () => {
   const [store, setStore] = useState([]);
   const dispatch = useDispatch();
+  const isTablet = useMediaQuery({
+    query: '(min-width: 768px) and (max-width: 1280px)',
+  });
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -35,11 +39,12 @@ const MedicineStore = () => {
     };
     fetchStore();
   }, [dispatch]);
+  const displayedMedStor = isTablet ? store.slice(0, 8) : store;
   return (
     <MedicineStoreContainer>
       <h3>Medicine store</h3>
       <MedicineStoreUl>
-        {store?.map(item => (
+        {displayedMedStor?.map(item => (
           <MedicineStoreLi>
             <MedicineStoreName>{item.name}</MedicineStoreName>
             <MedicineStoreAdres>

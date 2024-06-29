@@ -12,6 +12,10 @@ export const MedicineContainer = styled.div`
   font-size: 28px;
   line-height: 114%;
   color: #1d1e21;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 704px;
+    padding: 62px 0px;
+  }
 `;
 export const MedicineH2 = styled.h2`
   font-weight: 600;
@@ -24,6 +28,9 @@ export const MedicineUl = styled.ul`
   gap: 21px;
   flex-wrap: wrap;
   margin: auto;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    gap: 13px;
+  }
 `;
 export const MedicineLi = styled.li`
   width: 280px;
@@ -32,17 +39,24 @@ export const MedicineLi = styled.li`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 226px;
+  }
 `;
 export const MedicineImgDiv = styled.div`
   border: 1.15px solid rgba(89, 177, 122, 0.6);
   border-radius: 20px;
   padding: 14px 18px;
-  width: 280px;
+  /* width: 280px; */
+  width: 100%;
   height: 280px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    height: 260px;
+  }
 `;
 export const MedicineInfDiv = styled.div`
   width: 280px;
@@ -55,6 +69,10 @@ export const MedicineInfDiv = styled.div`
   font-size: 18px;
   line-height: 140%;
   color: #1d1e21;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 100%;
+    height: 135px;
+  }
 `;
 export const MedicineNameDiv = styled.div`
   display: flex;

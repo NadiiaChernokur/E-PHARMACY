@@ -1,5 +1,6 @@
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import {
+  BurgerMenu,
   HeaderCartDiv,
   HeaderCartNumber,
   HeaderContainer,
@@ -106,6 +107,20 @@ const Header = () => {
           <LogoText $isHomePage={isHomePage}>E-Pharmacy</LogoText>
         </LogoDiv>
       </NavLink>
+      {isHomePage ? (
+        <BurgerMenu>
+          <svg width="32" height="26">
+            <use href={`${sprite}#align-justify`}></use>
+          </svg>
+        </BurgerMenu>
+      ) : (
+        <BurgerMenu>
+          <svg width="32" height="26">
+            <use href={`${sprite}#align-justifyG`}></use>
+          </svg>
+        </BurgerMenu>
+      )}
+
       {location.pathname !== '/register' && location.pathname !== '/login' && (
         <NavDiv>
           <NavLink to="/home">

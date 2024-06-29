@@ -182,3 +182,9 @@ export const HeaderCartNumber = styled.div`
   top: 0;
   right: 0;
 `;
+export const BurgerMenu = styled.div`
+  display: none;
+  @media screen and (max-width: 1280px) {
+    display: block;
+  }
+`;

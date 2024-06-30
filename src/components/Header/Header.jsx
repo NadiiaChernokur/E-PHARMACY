@@ -194,7 +194,9 @@ const Header = () => {
           </BurgerMenu>
         )}
       </RegDivTablet>
-      {isOpenModal && <BurgerMenuModal close={toCloseModal} reg={isToken} />}
+      {isOpenModal && (
+        <BurgerMenuModal close={toCloseModal} reg={isToken} logOut={toLogOut} />
+      )}
     </HeaderContainer>
   );
 };

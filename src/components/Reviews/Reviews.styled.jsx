@@ -23,6 +23,10 @@ export const ReviewsLi = styled.li`
   text-align: center;
   color: #1d1e21;
   position: relative;
+  @media screen and (max-width: 767px) {
+    padding: 54px 0px 0px 0px;
+    width: 335px;
+  }
 `;
 
 export const ReviewsText = styled.p`

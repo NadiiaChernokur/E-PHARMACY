@@ -17,6 +17,9 @@ export const HomeMain = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-bottom: 64px;
+  @media screen and (max-width: 767px) {
+    height: 812px;
+  }
 `;
 export const HomeMainText = styled.p`
   width: 609px;
@@ -28,11 +31,20 @@ export const HomeMainText = styled.p`
   margin-bottom: 24px;
   position: relative;
   z-index: 2;
+  @media screen and (max-width: 767px) {
+    width: 331px;
+    font-size: 50px;
+  }
 `;
 export const HomeMainImg = styled.img`
   position: absolute;
   bottom: -146px;
   right: -76px;
+  @media screen and (max-width: 767px) {
+    bottom: -84px;
+    right: -61px;
+    width: 451px;
+  }
 `;
 
 export const HomeText = styled.p`
@@ -43,6 +55,12 @@ export const HomeText = styled.p`
   width: 207px;
   position: relative;
   right: -355px;
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+    line-height: 133%;
+    right: -166px;
+    width: 156px;
+  }
 `;
 export const HomeStores = styled.h2`
   font-weight: 600;

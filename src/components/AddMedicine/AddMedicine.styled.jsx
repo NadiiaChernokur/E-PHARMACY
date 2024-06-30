@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import photoM from '../../img/add-mob.png';
+import photo from '../../img/Add your image here.png';
 export const AddMedicinesContainer = styled.div`
   border-radius: 32px;
   padding: 40px 40px 40px 80px;
@@ -16,10 +18,20 @@ export const AddMedicinesContainer = styled.div`
     flex-direction: column;
     gap: 83px;
   }
+  @media screen and (max-width: 767px) {
+    padding: 20px;
+    width: 335px;
+    height: 674px;
+    flex-direction: column;
+    gap: 39px;
+  }
 `;
 
 export const AddMedicinesLeft = styled.div`
   width: 488px;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const AddMedicinesParagraf = styled.p`
   font-weight: 600;
@@ -28,6 +40,10 @@ export const AddMedicinesParagraf = styled.p`
   letter-spacing: -0.01em;
   color: #f1f1f1;
   margin-bottom: 24px;
+  @media screen and (max-width: 767px) {
+    font-size: 28px;
+    line-height: 114%;
+  }
 `;
 export const AddMedicinesText = styled.p`
   font-weight: 400;
@@ -35,6 +51,10 @@ export const AddMedicinesText = styled.p`
   line-height: 125%;
   color: #f1f1f1;
   margin-bottom: 40px;
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+    line-height: 129%;
+  }
 `;
 export const AddMedicinesButton = styled.button`
   border: 1px solid rgba(241, 241, 241, 0.5);
@@ -56,4 +76,10 @@ export const AddMedicinesButton = styled.button`
 export const AddMedicinesImgDiv = styled.div`
   width: 608px;
   height: 406px;
+  background-image: url(${photo});
+  @media screen and (max-width: 767px) {
+    width: 295px;
+    height: 335px;
+    background-image: url(${photoM});
+  }
 `;

@@ -10,6 +10,10 @@ export const HeaderContainer = styled.div`
   z-index: 5;
   @media screen and (min-width: 768px) and (max-width: 1280px) {
     width: 768px;
+    padding: 25px 20px;
+  }
+  @media screen and (max-width: 767px) {
+    width: 375px;
   }
 `;
 export const LogoDiv = styled.div`
@@ -34,7 +38,7 @@ export const LogoText = styled.p`
 export const NavDiv = styled.nav`
   display: flex;
   align-items: center;
-  @media screen and (min-width: 768px) and (max-width: 1280px) {
+  @media screen and (max-width: 1280px) {
     display: none;
   }
 `;
@@ -83,7 +87,7 @@ export const InnerDiv = styled.div`
 export const RegDiv = styled.div`
   display: flex;
   gap: 4px;
-  @media screen and (min-width: 768px) and (max-width: 1280px) {
+  @media screen and (max-width: 1280px) {
     display: none;
   }
 `;

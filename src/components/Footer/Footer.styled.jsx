@@ -8,6 +8,10 @@ export const FooterContainer = styled.footer`
   @media screen and (min-width: 768px) and (max-width: 1280px) {
     padding: 0px;
   }
+  @media screen and (max-width: 767px) {
+    height: 334px;
+    padding: 20px;
+  }
 `;
 export const InnerFooterContainer = styled.div`
   margin: auto;
@@ -16,11 +20,18 @@ export const InnerFooterContainer = styled.div`
     width: 768px;
     padding: 32px;
   }
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const TopFooterDiv = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 64px;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    margin-bottom: 34px;
+  }
 `;
 export const Nav = styled.nav`
   display: flex;
@@ -46,6 +57,9 @@ export const FooterText = styled.p`
 export const MediaDiv = styled.div`
   display: flex;
   gap: 12px;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `;
 export const Media = styled.a`
   border: 1px solid rgba(247, 248, 250, 0.1);
@@ -70,6 +84,17 @@ export const BottomFooterDiv = styled.div`
   justify-content: center;
   padding-top: 40px;
   border-top: 1px solid rgba(247, 248, 250, 0.3);
+  @media screen and (max-width: 767px) {
+    padding-top: 20px;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 100%;
+    color: #f7f8fa;
+    white-space: nowrap;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+  }
 `;
 export const Span = styled.span`
   width: 1px;
@@ -94,5 +119,9 @@ export const Div = styled.div`
     flex-direction: column;
     align-items: flex-end;
     gap: 32px;
+  }
+  @media screen and (max-width: 767px) {
+    display: flex;
+    margin-top: 40px;
   }
 `;

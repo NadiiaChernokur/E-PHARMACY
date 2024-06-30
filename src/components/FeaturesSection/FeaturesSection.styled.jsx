@@ -13,6 +13,11 @@ export const FeaturesSectionUl = styled.ul`
     flex-wrap: wrap;
     justify-content: center;
   }
+  @media screen and (max-width: 767px) {
+    width: 335px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
 export const FeaturesDiv = styled.div`
   display: flex;

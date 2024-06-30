@@ -1,12 +1,9 @@
 import {
-  InnerDiv,
-  LoginButton,
-  MidleDiv,
   NavParagraf,
   NavParagrafInner,
   RegButton,
 } from 'components/Header/Header.styled';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import {
   BurgerSvg,
   InnerDivBurger,
@@ -18,11 +15,17 @@ import {
   NavDivBurger,
   RegDivBurger,
 } from './BurgerMenu.styled';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import sprite from '../../img/sprite.svg';
+// import { useDispatch } from 'react-redux';
+// import { logOut } from '../../redux/operation';
 
-const BurgerMenuModal = ({ close, reg }) => {
+const BurgerMenuModal = ({ close, reg, logOut }) => {
+  console.log(reg);
+  const [isRegistr, setIsRegister] = useState(false);
   const location = useLocation();
+  //   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleKeyDown = useCallback(
     e => {
       if (e.key === 'Escape') {
@@ -32,21 +35,26 @@ const BurgerMenuModal = ({ close, reg }) => {
     [close]
   );
   useEffect(() => {
+    setIsRegister(reg);
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleKeyDown]);
+  }, [handleKeyDown, reg]);
 
   const handleBackgroundClick = event => {
     if (event.target === event.currentTarget) {
       close();
     }
   };
+  const toNavigate = to => {
+    navigate(`/${to}`);
+    close();
+  };
   return (
     <ModalBackground onClick={handleBackgroundClick}>
       <ModalBurgerContainer>
-        <BurgerSvg width="32" height="32">
+        <BurgerSvg width="32" height="32" onClick={close}>
           <use href={`${sprite}#x`}></use>
         </BurgerSvg>
         <NavDivBurger>
@@ -87,18 +95,22 @@ const BurgerMenuModal = ({ close, reg }) => {
         </NavDivBurger>
 
         <RegDivBurger>
-          {!reg ? (
+          {!isRegistr ? (
             <>
               <NavLink to="/register">
-                <RegButton>Register</RegButton>
+                <RegButton onClick={() => toNavigate('register')}>
+                  Register
+                </RegButton>
               </NavLink>
               <NavLink to="/login">
-                <LoginButtonBurger>Login</LoginButtonBurger>
+                <LoginButtonBurger onClick={() => toNavigate('login')}>
+                  Login
+                </LoginButtonBurger>
               </NavLink>{' '}
             </>
           ) : (
             <NavLink to="/login">
-              <LogoutButtonBurger>Log out</LogoutButtonBurger>
+              <LogoutButtonBurger onClick={logOut}>Log out</LogoutButtonBurger>
             </NavLink>
           )}
         </RegDivBurger>

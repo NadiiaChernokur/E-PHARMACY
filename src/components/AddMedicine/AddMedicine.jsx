@@ -29,7 +29,7 @@ const AddMedicine = () => {
         </AddMedicinesButton>
       </AddMedicinesLeft>
       <AddMedicinesImgDiv>
-        <img src={photo} alt="Img" width="100%"></img>
+        {/* <img src={photo} alt="Img" width="100%"></img> */}
       </AddMedicinesImgDiv>
     </AddMedicinesContainer>
   );

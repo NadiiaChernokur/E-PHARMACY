@@ -11,6 +11,9 @@ export const NearestStoreUl = styled.ul`
     gap: 16px;
     flex-wrap: wrap;
   }
+  @media screen and (max-width: 767px) {
+    width: 335px;
+  }
 `;
 export const NearestStoreLi = styled.li`
   border: 1.15px solid #f1f1f1;
@@ -23,6 +26,10 @@ export const NearestStoreLi = styled.li`
   @media screen and (min-width: 768px) and (max-width: 1280px) {
     width: 344px;
   }
+  @media screen and (max-width: 767px) {
+    width: 335px;
+    height: 202px;
+  }
 `;
 export const NearestStoreName = styled.div`
   display: flex;
@@ -33,6 +40,10 @@ export const NearestStoreName = styled.div`
   color: #1d1e21;
   align-items: center;
   margin-bottom: 40px;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 32px;
+    align-items: flex-start;
+  }
 `;
 export const Name = styled.p`
   width: 150px;
@@ -101,4 +112,7 @@ export const NearestStoreAdressSvg = styled.div`
 `;
 export const Adress = styled.p`
   width: 120px;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
 `;

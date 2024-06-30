@@ -9,6 +9,10 @@ export const InformationUl = styled.ul`
     width: 670px;
     flex-wrap: wrap;
   }
+  @media screen and (max-width: 767px) {
+    width: 335px;
+    flex-direction: column;
+  }
 `;
 export const InformationLi = styled.li`
   border: 1.15px solid #f1f1f1;
@@ -20,6 +24,11 @@ export const InformationLi = styled.li`
   background: #fdfdfd;
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 767px) {
+    width: 335px;
+    height: 126px;
+    justify-content: space-between;
+  }
 `;
 export const TopInformationDiv = styled.div`
   display: flex;
@@ -44,6 +53,10 @@ export const NumberDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 767px) {
+    width: 54px;
+    height: 54px;
+  }
 `;
 export const BottomInformationDiv = styled.div`
   display: flex;
@@ -53,6 +66,9 @@ export const BottomInformationDiv = styled.div`
   font-size: 36px;
   line-height: 140%;
   color: #252539;
+  @media screen and (max-width: 767px) {
+    font-size: 24px;
+  }
 `;
 export const ShopNow = styled.p`
   font-weight: 400;

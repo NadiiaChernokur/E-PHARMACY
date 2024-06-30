@@ -15,6 +15,9 @@ export const MedicineStoreContainer = styled.div`
     width: 704px;
     padding: 62px 0px;
   }
+  @media screen and (max-width: 767px) {
+    width: 335px;
+  }
 `;
 export const MedicineStoreUl = styled.ul`
   display: flex;
@@ -79,6 +82,9 @@ export const VisiteButton = styled.button`
   &:focus,
   &:active {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  @media screen and (max-width: 767px) {
+    display: none;
   }
 `;
 

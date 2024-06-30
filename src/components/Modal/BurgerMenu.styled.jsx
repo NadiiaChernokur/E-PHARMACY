@@ -33,6 +33,10 @@ export const NavDivBurger = styled.nav`
 export const RegDivBurger = styled.div`
   display: flex;
   gap: 4px;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 export const LoginButtonBurger = styled.button`
   background: none;

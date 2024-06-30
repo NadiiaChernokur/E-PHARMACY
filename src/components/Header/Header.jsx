@@ -25,11 +25,13 @@ import logoH from '../../img/MaskG.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser, logOut, safeToken } from '../../redux/operation';
 import { useEffect, useState } from 'react';
+import BurgerMenuModal from 'components/Modal/BurgerMenu';
 
 const Header = () => {
   const [isToken, setIsToken] = useState(false);
   const [userName, setUserName] = useState('U');
   const [cartNamber, setCartNumber] = useState(0);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -50,8 +52,6 @@ const Header = () => {
   }, [cart, user]);
 
   useEffect(() => {
-    // setCartNumber(cart);
-    // setUserName(user?.name);
     console.log(user);
     const fetchUser = async () => {
       const storedUserData = localStorage.getItem('e-pharmacy');
@@ -69,9 +69,7 @@ const Header = () => {
         }
       }
     };
-    // if (user.token) {
-    //   setIsToken(true);
-    // }
+
     if (!user.token) {
       fetchUser();
     } else {
@@ -94,7 +92,12 @@ const Header = () => {
       console.error('Error logging out:', error);
     }
   };
-  console.log(userName);
+  const toOpenModal = () => {
+    setIsOpenModal(true);
+  };
+  const toCloseModal = () => {
+    setIsOpenModal(false);
+  };
   return (
     <HeaderContainer>
       <NavLink to="/home">
@@ -178,19 +181,20 @@ const Header = () => {
           </HeaderRegDiv>
         )}
         {isHomePage ? (
-          <BurgerMenu>
+          <BurgerMenu onClick={toOpenModal}>
             <svg width="32" height="26">
               <use href={`${sprite}#align-justify`}></use>
             </svg>
           </BurgerMenu>
         ) : (
-          <BurgerMenu>
+          <BurgerMenu onClick={toOpenModal}>
             <svg width="32" height="26">
               <use href={`${sprite}#align-justifyG`}></use>
             </svg>
           </BurgerMenu>
         )}
       </RegDivTablet>
+      {isOpenModal && <BurgerMenuModal close={toCloseModal} reg={isToken} />}
     </HeaderContainer>
   );
 };

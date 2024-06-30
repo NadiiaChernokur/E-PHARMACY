@@ -4,6 +4,9 @@ export const CartProductUl = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 704px;
+  }
 `;
 export const CartProductLi = styled.li`
   width: 100%;
@@ -29,6 +32,9 @@ export const CartProductInfDiv = styled.div`
   font-size: 14px;
   line-height: 129%;
   color: #6a6a6f;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 549px;
+  }
 `;
 
 export const CartProductNamePrice = styled.div`

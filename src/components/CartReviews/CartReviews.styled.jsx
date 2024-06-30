@@ -10,11 +10,14 @@ export const CartReviewsLi = styled.li`
   border-radius: 20px;
   padding: 14px 28px;
   width: 720px;
-  /* height: 162px; */
+
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
   color: #6a6a6f;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 640px;
+  }
 `;
 export const CartReviewsTopDiv = styled.div`
   display: flex;

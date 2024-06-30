@@ -1,6 +1,7 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Formik } from 'formik';
 import {
   Error,
+  FonDiv,
   LogFieldDiv,
   LogInSpan,
   LoginForm,
@@ -18,6 +19,8 @@ import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { logIn, registration } from '../../redux/operation';
 import photo from '../../img/white round pill.png';
+import phon from '../../img/elements.png';
+
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -193,6 +196,9 @@ const Register = () => {
           )}
         </Formik>
       )}
+      <FonDiv>
+        <img src={phon} alt="" width="196px"></img>
+      </FonDiv>
     </RegisterContainer>
   );
 };

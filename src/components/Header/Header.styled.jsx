@@ -131,6 +131,9 @@ export const LogoutButton = styled.button`
   font-size: 14px;
   line-height: 100%;
   color: #59b17a;
+  @media screen and (max-width: 1280px) {
+    display: none;
+  }
 `;
 export const HeaderCartDiv = styled.div`
   width: 44px;
@@ -186,5 +189,12 @@ export const BurgerMenu = styled.div`
   display: none;
   @media screen and (max-width: 1280px) {
     display: block;
+  }
+`;
+export const RegDivTablet = styled.div`
+  display: flex;
+  @media screen and (max-width: 1280px) {
+    display: flex;
+    align-items: center;
   }
 `;

@@ -32,6 +32,7 @@ import Paginations from 'components/Pagination/Pagination';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useMediaQuery } from 'react-responsive';
 
 const validationSchema = Yup.object({
   keyword: Yup.string(),
@@ -39,11 +40,14 @@ const validationSchema = Yup.object({
 });
 
 const Medicine = () => {
+  const isTablet = useMediaQuery({
+    query: '(max-width: 1280px)',
+  });
   const [options, setOptions] = useState([]);
   const [pruductArray, setProductArray] = useState([]);
   const [filter, setFilter] = useState(false);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(12);
+  const [limit, setLimit] = useState(isTablet ? 9 : 12);
   const [totalPages, setTotalPages] = useState(0);
   const [isToken, setIsToken] = useState('');
   const dispatch = useDispatch();

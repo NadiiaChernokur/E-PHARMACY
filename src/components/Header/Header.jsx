@@ -17,6 +17,7 @@ import {
   NavParagrafInner,
   RegButton,
   RegDiv,
+  RegDivTablet,
 } from './Header.styled';
 import sprite from '../../img/sprite.svg';
 import logo from '../../img/MaskLogo.png';
@@ -107,19 +108,6 @@ const Header = () => {
           <LogoText $isHomePage={isHomePage}>E-Pharmacy</LogoText>
         </LogoDiv>
       </NavLink>
-      {isHomePage ? (
-        <BurgerMenu>
-          <svg width="32" height="26">
-            <use href={`${sprite}#align-justify`}></use>
-          </svg>
-        </BurgerMenu>
-      ) : (
-        <BurgerMenu>
-          <svg width="32" height="26">
-            <use href={`${sprite}#align-justifyG`}></use>
-          </svg>
-        </BurgerMenu>
-      )}
 
       {location.pathname !== '/register' && location.pathname !== '/login' && (
         <NavDiv>
@@ -159,35 +147,50 @@ const Header = () => {
           </NavLink>
         </NavDiv>
       )}
-      {!isToken ? (
-        <RegDiv>
-          <NavLink to="/register">
-            <RegButton>Register</RegButton>
-          </NavLink>
-          <NavLink to="/login">
-            <LoginButton $isHomePage={isHomePage}>Login</LoginButton>
-          </NavLink>
-        </RegDiv>
-      ) : (
-        <HeaderRegDiv>
-          <NavLink to="/cart">
-            <HeaderCartDiv>
-              <HeaderCartNumber>{cartNamber}</HeaderCartNumber>
-              <svg width="16" height="16">
-                <use href={`${sprite}#shopping-cart`}></use>
-              </svg>
-            </HeaderCartDiv>
-          </NavLink>
-          <NavLink>
-            <HeaderNameDiv $isHomePage={isHomePage}>
-              {getFirstLetter(userName)}
-            </HeaderNameDiv>
-          </NavLink>
-          <NavLink>
-            <LogoutButton onClick={toLogOut}>Log out</LogoutButton>
-          </NavLink>
-        </HeaderRegDiv>
-      )}
+      <RegDivTablet>
+        {!isToken ? (
+          <RegDiv>
+            <NavLink to="/register">
+              <RegButton>Register</RegButton>
+            </NavLink>
+            <NavLink to="/login">
+              <LoginButton $isHomePage={isHomePage}>Login</LoginButton>
+            </NavLink>
+          </RegDiv>
+        ) : (
+          <HeaderRegDiv>
+            <NavLink to="/cart">
+              <HeaderCartDiv>
+                <HeaderCartNumber>{cartNamber}</HeaderCartNumber>
+                <svg width="16" height="16">
+                  <use href={`${sprite}#shopping-cart`}></use>
+                </svg>
+              </HeaderCartDiv>
+            </NavLink>
+            <NavLink>
+              <HeaderNameDiv $isHomePage={isHomePage}>
+                {getFirstLetter(userName)}
+              </HeaderNameDiv>
+            </NavLink>
+            <NavLink>
+              <LogoutButton onClick={toLogOut}>Log out</LogoutButton>
+            </NavLink>
+          </HeaderRegDiv>
+        )}
+        {isHomePage ? (
+          <BurgerMenu>
+            <svg width="32" height="26">
+              <use href={`${sprite}#align-justify`}></use>
+            </svg>
+          </BurgerMenu>
+        ) : (
+          <BurgerMenu>
+            <svg width="32" height="26">
+              <use href={`${sprite}#align-justifyG`}></use>
+            </svg>
+          </BurgerMenu>
+        )}
+      </RegDivTablet>
     </HeaderContainer>
   );
 };

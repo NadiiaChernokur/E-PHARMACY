@@ -4,6 +4,10 @@ export const DrugContainer = styled.div`
   display: flex;
   gap: 20px;
   justify-content: center;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const DrugCart = styled.div`
@@ -13,6 +17,11 @@ export const DrugCart = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    flex-direction: row;
+    width: 688px;
+    height: 284px;
+  }
 `;
 export const DrugImgDiv = styled.div`
   border: 1.15px solid rgba(89, 177, 122, 0.6);
@@ -20,6 +29,11 @@ export const DrugImgDiv = styled.div`
   padding: 14px 18px;
   width: 364px;
   height: 337px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+  }
 `;
 export const DrugInfDiv = styled.div`
   border-radius: 20px;
@@ -30,6 +44,11 @@ export const DrugInfDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 324px;
+    height: 284px;
+    position: relative;
+  }
 `;
 export const DrugNameDiv = styled.div`
   display: flex;
@@ -38,18 +57,29 @@ export const DrugNameDiv = styled.div`
   font-size: 20px;
   line-height: 140%;
   color: #1d1e21;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    flex-direction: column;
+    gap: 54px;
+  }
 `;
 export const DrugFirm = styled.p`
   font-weight: 400;
   font-size: 12px;
   line-height: 150%;
   color: rgba(29, 30, 33, 0.6);
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    position: absolute;
+    top: 53px;
+  }
 `;
 
 export const DrugButtonsDiv = styled.div`
   display: flex;
   justify-content: space-between;
   border-radius: 60px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    gap: 12px;
+  }
 `;
 
 export const DrugAddButton = styled.button`
@@ -100,9 +130,11 @@ export const PlusMinusButton = styled.button`
 export const InformDiv = styled.div`
   border-radius: 27px;
   width: 800px;
-  /* height: 709px; */
   background: #fff;
   padding: 40px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 704px;
+  }
 `;
 export const InformButtonsDiv = styled.div`
   display: flex;

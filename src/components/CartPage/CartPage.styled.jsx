@@ -3,10 +3,17 @@ export const CartContainer = styled.div`
   width: 1224px;
   padding: 20px;
   margin: auto;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 704px;
+  }
 `;
 export const CartMain = styled.div`
   display: flex;
   gap: 96px;
+  margin-top: 32px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    flex-direction: column;
+  }
 `;
 
 export const CartFormDiv = styled.div`
@@ -18,6 +25,9 @@ export const CartFormDiv = styled.div`
   font-size: 16px;
   line-height: 125%;
   color: #6a6a6f;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    width: 704px;
+  }
 `;
 export const CartFormHead = styled.p`
   font-weight: 600;

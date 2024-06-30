@@ -6,8 +6,14 @@ export const RegisterContainer = styled.div`
   justify-content: center;
   gap: 54px;
   padding: 199px 0;
-
   box-sizing: border-box;
+  position: relative;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 64px 0px;
+    width: 704px;
+  }
 `;
 export const RegisterText = styled.div`
   width: 540px;
@@ -105,4 +111,13 @@ export const LogInSpan = styled.span`
 `;
 export const Error = styled(ErrorMessage)`
   color: red;
+`;
+
+export const FonDiv = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  bottom: 0;
+  right: 0;
 `;

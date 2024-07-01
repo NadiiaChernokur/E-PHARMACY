@@ -6,6 +6,9 @@ export const Pagination = styled.div`
   align-items: center;
   margin-top: 20px;
   gap: 8px;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 20px;
+  }
 `;
 
 export const PageButton = styled.button`

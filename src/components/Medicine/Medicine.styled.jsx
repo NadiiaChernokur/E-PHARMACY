@@ -58,7 +58,6 @@ export const MedicineImgDiv = styled.div`
   border: 1.15px solid rgba(89, 177, 122, 0.6);
   border-radius: 20px;
   padding: 14px 18px;
-  /* width: 280px; */
   width: 100%;
   height: 280px;
   display: flex;

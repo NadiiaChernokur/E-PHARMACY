@@ -7,7 +7,10 @@ import {
   CartReviewsTime,
   CartReviewsTopDiv,
   CartReviewsUl,
+  DopDiv,
+  StarSvg,
 } from './CartReviews.styled';
+import sprite from '../../img/sprite.svg';
 
 const CartReviews = () => {
   return (
@@ -25,7 +28,12 @@ const CartReviews = () => {
             </div>
           </CartReviewsNameDiv>
           <CartReviewsRatingDiv>
-            <RatingFour />
+            <DopDiv>
+              <RatingFour />
+            </DopDiv>
+            <StarSvg width="18" height="18">
+              <use href={`${sprite}#starY`}></use>
+            </StarSvg>
             <p>4</p>
           </CartReviewsRatingDiv>
         </CartReviewsTopDiv>
@@ -49,7 +57,12 @@ const CartReviews = () => {
             </div>
           </CartReviewsNameDiv>
           <CartReviewsRatingDiv>
-            <RatingFive />
+            <DopDiv>
+              <RatingFive />
+            </DopDiv>
+            <StarSvg width="18" height="18">
+              <use href={`${sprite}#starY`}></use>
+            </StarSvg>
             <p>5</p>
           </CartReviewsRatingDiv>
         </CartReviewsTopDiv>
@@ -73,7 +86,12 @@ const CartReviews = () => {
             </div>
           </CartReviewsNameDiv>
           <CartReviewsRatingDiv>
-            <RatingThree />
+            <DopDiv>
+              <RatingThree />
+            </DopDiv>
+            <StarSvg width="18" height="18">
+              <use href={`${sprite}#starY`}></use>
+            </StarSvg>
             <p>3</p>
           </CartReviewsRatingDiv>
         </CartReviewsTopDiv>

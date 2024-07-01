@@ -10,13 +10,15 @@ export const CartReviewsLi = styled.li`
   border-radius: 20px;
   padding: 14px 28px;
   width: 720px;
-
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
   color: #6a6a6f;
   @media screen and (min-width: 768px) and (max-width: 1280px) {
     width: 640px;
+  }
+  @media screen and (max-width: 767px) {
+    width: 295px;
   }
 `;
 export const CartReviewsTopDiv = styled.div`
@@ -52,4 +54,17 @@ export const CartReviewsRatingDiv = styled.div`
   font-size: 14px;
   line-height: 129%;
   color: #1d1e21;
+`;
+
+export const DopDiv = styled.div`
+  display: flex;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`;
+export const StarSvg = styled.svg`
+  display: none;
+  @media screen and (max-width: 767px) {
+    display: block;
+  }
 `;

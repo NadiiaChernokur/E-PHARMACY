@@ -8,6 +8,10 @@ export const DrugContainer = styled.div`
     flex-direction: column;
     align-items: center;
   }
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const DrugCart = styled.div`
@@ -22,6 +26,9 @@ export const DrugCart = styled.div`
     width: 688px;
     height: 284px;
   }
+  @media screen and (max-width: 767px) {
+    width: 335px;
+  }
 `;
 export const DrugImgDiv = styled.div`
   border: 1.15px solid rgba(89, 177, 122, 0.6);
@@ -33,6 +40,9 @@ export const DrugImgDiv = styled.div`
     flex-direction: row;
     width: 100%;
     height: 100%;
+  }
+  @media screen and (max-width: 767px) {
+    width: 100%;
   }
 `;
 export const DrugInfDiv = styled.div`
@@ -48,6 +58,9 @@ export const DrugInfDiv = styled.div`
     width: 324px;
     height: 284px;
     position: relative;
+  }
+  @media screen and (max-width: 767px) {
+    width: 100%;
   }
 `;
 export const DrugNameDiv = styled.div`
@@ -134,6 +147,10 @@ export const InformDiv = styled.div`
   padding: 40px;
   @media screen and (min-width: 768px) and (max-width: 1280px) {
     width: 704px;
+  }
+  @media screen and (max-width: 767px) {
+    width: 335px;
+    padding: 20px;
   }
 `;
 export const InformButtonsDiv = styled.div`

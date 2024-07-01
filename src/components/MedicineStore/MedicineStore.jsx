@@ -7,8 +7,10 @@ import {
   MedicineStoreName,
   MedicineStoreUl,
   MedicineStoreVisiteDiv,
+  NameDiv,
   OpenDiv,
   StarDiv,
+  StarDivMob,
   StarNambeDiv,
   StarNamber,
   StarNumber,
@@ -46,7 +48,22 @@ const MedicineStore = () => {
       <MedicineStoreUl>
         {displayedMedStor?.map(item => (
           <MedicineStoreLi>
-            <MedicineStoreName>{item.name}</MedicineStoreName>
+            <NameDiv>
+              <MedicineStoreName>{item.name}</MedicineStoreName>
+              <StarDivMob>
+                <StarNambeDiv>
+                  <svg width="18" height="18">
+                    <use href={`${sprite}#starY`}></use>
+                  </svg>
+                  <StarNumber>{item.rating}</StarNumber>
+                </StarNambeDiv>
+                {item.status === 'open' ? (
+                  <OpenDiv>open</OpenDiv>
+                ) : (
+                  <CloseDiv>close</CloseDiv>
+                )}
+              </StarDivMob>
+            </NameDiv>
             <MedicineStoreAdres>
               <svg width="18" height="18">
                 <use href={`${sprite}#map-pin`}></use>

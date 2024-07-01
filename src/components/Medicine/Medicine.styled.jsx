@@ -16,6 +16,10 @@ export const MedicineContainer = styled.div`
     width: 704px;
     padding: 62px 0px;
   }
+  @media screen and (max-width: 767px) {
+    width: 335px;
+    padding: 0;
+  }
 `;
 export const MedicineH2 = styled.h2`
   font-weight: 600;
@@ -31,6 +35,9 @@ export const MedicineUl = styled.ul`
   @media screen and (min-width: 768px) and (max-width: 1280px) {
     gap: 13px;
   }
+  @media screen and (max-width: 767px) {
+    gap: 20px;
+  }
 `;
 export const MedicineLi = styled.li`
   width: 280px;
@@ -41,6 +48,10 @@ export const MedicineLi = styled.li`
   gap: 8px;
   @media screen and (min-width: 768px) and (max-width: 1280px) {
     width: 226px;
+  }
+  @media screen and (max-width: 767px) {
+    width: 335px;
+    height: 435px;
   }
 `;
 export const MedicineImgDiv = styled.div`
@@ -57,6 +68,9 @@ export const MedicineImgDiv = styled.div`
   @media screen and (min-width: 768px) and (max-width: 1280px) {
     height: 260px;
   }
+  @media screen and (max-width: 767px) {
+    height: 300px;
+  }
 `;
 export const MedicineInfDiv = styled.div`
   width: 280px;
@@ -72,6 +86,9 @@ export const MedicineInfDiv = styled.div`
   @media screen and (min-width: 768px) and (max-width: 1280px) {
     width: 100%;
     height: 135px;
+  }
+  @media screen and (max-width: 767px) {
+    width: 335px;
   }
 `;
 export const MedicineNameDiv = styled.div`
@@ -152,6 +169,10 @@ export const FilterButton = styled.button`
 export const FilterForm = styled(Form)`
   display: flex;
   gap: 8px;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    gap: 12px;
+  }
 `;
 
 export const FieldSelector = styled(Field)`
@@ -166,6 +187,9 @@ export const FieldSelector = styled(Field)`
   font-size: 12px;
   line-height: 150%;
   color: rgba(29, 30, 33, 0.4);
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const FieldSearch = styled(Field)`
   border: 1px solid rgba(29, 30, 33, 0.1);
@@ -174,11 +198,13 @@ export const FieldSearch = styled(Field)`
   background: #fff;
   margin-right: 6px;
   padding: 10px;
-
   font-weight: 400;
   font-size: 12px;
   line-height: 150%;
   color: rgba(29, 30, 33, 0.4);
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
 `;
 export const SearchSvg = styled.svg`
   position: absolute;
